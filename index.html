@@ -13,13 +13,12 @@ html { scroll-behavior: smooth; }
 body {
 background: #0f1a2e;
 color: #f0efe8;
-font-family: ‘Barlow’, sans-serif;
+font-family: 'Barlow', sans-serif;
 overflow-x: hidden;
 }
 
-/* Fundo global com gradiente sutil inspirado na bandeira do Paraguai */
 body::before {
-content: ‘’;
+content: '';
 position: fixed;
 inset: 0;
 background:
@@ -30,7 +29,6 @@ pointer-events: none;
 z-index: 0;
 }
 
-/* Tudo acima do body::before */
 .hero, .ticker, section, .featured-grid, .products-wrap, footer {
 position: relative;
 z-index: 1;
@@ -44,9 +42,8 @@ align-items: center; text-align: center;
 padding: 2rem; overflow: hidden;
 }
 
-/* Listras da bandeira do Paraguai — sutis no fundo do hero */
 .hero::after {
-content: ‘’;
+content: '';
 position: absolute;
 inset: 0;
 background: linear-gradient(
@@ -75,7 +72,7 @@ display: inline-block;
 background: rgba(0,160,70,0.18);
 border: 1px solid rgba(0,160,70,0.4);
 color: #2ecc71;
-font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
 font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
 padding: 0.4rem 1.2rem; border-radius: 2px; margin-bottom: 2rem;
 animation: fadeDown 0.6s ease both;
@@ -83,7 +80,7 @@ position: relative; z-index: 2;
 }
 
 .hero-title {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: clamp(4rem, 14vw, 11rem);
 line-height: 0.85; letter-spacing: -0.02em;
 animation: fadeDown 0.6s 0.1s ease both;
@@ -93,7 +90,7 @@ position: relative; z-index: 2;
 .hero-title .outline { -webkit-text-stroke: 2px #f0efe8; color: transparent; }
 
 .hero-sub {
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: 'Barlow Condensed', sans-serif;
 font-size: clamp(0.9rem, 2.5vw, 1.4rem); font-weight: 300;
 letter-spacing: 0.18em; text-transform: uppercase;
 color: rgba(240,239,232,0.45); margin-top: 1.5rem;
@@ -105,7 +102,7 @@ position: relative; z-index: 2;
 
 .btn-primary {
 background: #00a046; color: #fff;
-font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
 font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase;
 padding: 1rem 2.5rem; border: none; cursor: pointer;
 text-decoration: none; display: inline-block; transition: all 0.2s;
@@ -117,7 +114,7 @@ clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 
 position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
 display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
 color: rgba(240,239,232,0.25);
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: 'Barlow Condensed', sans-serif;
 font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
 z-index: 2;
 }
@@ -136,7 +133,7 @@ border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 .ticker-inner {
 display: inline-block; animation: ticker 28s linear infinite;
-font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
 font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase;
 }
 
@@ -146,13 +143,13 @@ padding: 4rem 2rem 2rem;
 max-width: 1400px; margin: 0 auto;
 }
 .section-label {
-font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.72rem;
+font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
 letter-spacing: 0.3em; text-transform: uppercase; color: #2ecc71;
 margin-bottom: 0.75rem; display: flex; align-items: center; gap: 1rem;
 }
-.section-label::after { content: ‘’; width: 50px; height: 1px; background: #2ecc71; }
+.section-label::after { content: ''; width: 50px; height: 1px; background: #2ecc71; }
 .section-title {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: clamp(2.2rem, 5vw, 4.5rem); line-height: 1;
 }
 
@@ -162,7 +159,7 @@ display: inline-block;
 background: rgba(0,160,70,0.12);
 border: 1px solid rgba(0,160,70,0.25);
 color: #2ecc71;
-font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.62rem; font-weight: 700;
+font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 700;
 letter-spacing: 0.22em; text-transform: uppercase;
 padding: 0.28rem 0.65rem; border-radius: 2px; margin-bottom: 0.75rem; width: fit-content;
 }
@@ -199,7 +196,7 @@ position: relative; overflow: hidden;
 transition: background 0.25s; cursor: pointer;
 }
 .fcard::before {
-content: ‘’;
+content: '';
 position: absolute; inset: 0;
 background: linear-gradient(135deg, rgba(0,48,135,0.08) 0%, transparent 60%);
 pointer-events: none;
@@ -215,7 +212,7 @@ background: linear-gradient(135deg, rgba(190,20,20,0.07) 0%, transparent 60%);
 .fcard-badge {
 position: absolute; top: 1rem; right: 1rem;
 background: #be1414; color: #fff;
-font-family: ‘Bebas Neue’, sans-serif; font-size: 0.72rem;
+font-family: 'Bebas Neue', sans-serif; font-size: 0.72rem;
 padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.06em;
 }
 .fcard-icon {
@@ -223,7 +220,7 @@ font-size: 2.8rem; display: block;
 transition: transform 0.3s ease; margin-bottom: 0.25rem;
 }
 .fcard-name {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.05;
 }
 .fcard-desc {
@@ -235,13 +232,13 @@ display: flex; align-items: center; justify-content: space-between;
 gap: 1rem; margin-top: 0.75rem; flex-wrap: wrap;
 }
 .fcard-price {
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: 'Barlow Condensed', sans-serif;
 font-size: 0.72rem; color: rgba(240,239,232,0.32); line-height: 1.4;
 }
 .fcard-price strong { display: block; font-size: 1.25rem; color: #2ecc71; font-weight: 700; }
 .btn-enc {
 background: #00a046; color: #fff;
-font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
 font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
 padding: 0.58rem 1.15rem; text-decoration: none; display: inline-block;
 transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
@@ -276,12 +273,12 @@ overflow: hidden; cursor: pointer; transition: background 0.25s;
 display: flex; flex-direction: column;
 }
 .product-card::before {
-content: ‘’; position: absolute; bottom: 0; left: 0; right: 0;
+content: ''; position: absolute; bottom: 0; left: 0; right: 0;
 height: 2px; background: #00a046; transform: scaleX(0);
 transform-origin: left; transition: transform 0.3s ease;
 }
 .product-card::after {
-content: ‘’;
+content: '';
 position: absolute; inset: 0;
 background: linear-gradient(135deg, rgba(0,48,135,0.06) 0%, transparent 55%);
 pointer-events: none;
@@ -291,14 +288,14 @@ pointer-events: none;
 .product-card:hover .product-icon { transform: scale(1.1) rotate(-5deg); }
 
 .product-icon { font-size: 2.5rem; margin-bottom: 0.85rem; transition: transform 0.3s ease; display: block; position: relative; z-index: 1; }
-.product-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.6rem; line-height: 1; margin-bottom: 0.4rem; position: relative; z-index: 1; }
+.product-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; line-height: 1; margin-bottom: 0.4rem; position: relative; z-index: 1; }
 .product-desc { font-size: 0.8rem; font-weight: 300; color: rgba(240,239,232,0.42); line-height: 1.55; flex: 1; position: relative; z-index: 1; }
 .product-price-area { margin-top: 1.1rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 0.75rem; position: relative; z-index: 1; }
-.product-price { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.72rem; color: rgba(240,239,232,0.32); line-height: 1.4; }
+.product-price { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; color: rgba(240,239,232,0.32); line-height: 1.4; }
 .product-price strong { display: block; font-size: 1.2rem; color: #2ecc71; font-weight: 700; }
 .btn-pedir {
 background: #00a046; color: #fff;
-font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
 font-size: 0.73rem; letter-spacing: 0.1em; text-transform: uppercase;
 padding: 0.5rem 0.95rem; text-decoration: none; display: inline-block;
 transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
@@ -312,9 +309,9 @@ padding: 3rem 2rem; text-align: center;
 border-top: 1px solid rgba(255,255,255,0.06);
 position: relative; z-index: 1;
 }
-.footer-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.4rem; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
 .footer-logo span { color: #2ecc71; }
-.footer-sub { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,239,232,0.25); margin-bottom: 0.75rem; }
+.footer-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,239,232,0.25); margin-bottom: 0.75rem; }
 .footer-note { font-size: 0.72rem; color: rgba(240,239,232,0.15); font-weight: 300; }
 
 /* ========= WHATSAPP ========= */
@@ -345,7 +342,6 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 <body>
 
 <!-- HERO -->
-
 <section class="hero">
   <div class="flag-bar"></div>
   <div class="hero-badge">&#128293; Encomendas abertas &mdash; Paraguai</div>
@@ -366,15 +362,13 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 </section>
 
 <!-- TICKER -->
-
 <div class="ticker">
   <div class="ticker-inner">
-    FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES ARABES &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp; FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES ARABES &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp;
+    FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES ARABES &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; MACBOOK AIR &nbsp;&bull;&nbsp; AIRPODS PRO &nbsp;&bull;&nbsp; APPLE WATCH &nbsp;&bull;&nbsp; JBL CAIXA DE SOM &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp; FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES ARABES &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; MACBOOK AIR &nbsp;&bull;&nbsp; AIRPODS PRO &nbsp;&bull;&nbsp; APPLE WATCH &nbsp;&bull;&nbsp; JBL CAIXA DE SOM &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp;
   </div>
 </div>
 
 <!-- SECTION HEADER -->
-
 <section id="produtos" style="background:transparent;">
   <div class="section reveal">
     <div class="section-label">Faca seu pedido</div>
@@ -383,11 +377,9 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 </section>
 
 <!-- FEATURED 2x2 -->
-
 <div class="featured-grid">
 
   <!-- iPhone 17 -->
-
   <div class="fcard alt reveal">
     <div class="fcard-badge">NOVO 2025</div>
     <span class="fcard-icon">&#128241;</span>
@@ -401,7 +393,6 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   </div>
 
   <!-- PS5 -->
-
   <div class="fcard reveal rd1">
     <span class="fcard-icon">&#127918;</span>
     <span class="product-tag hot">HOT ITEM</span>
@@ -414,7 +405,6 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   </div>
 
   <!-- Mounjaro -->
-
   <div class="fcard reveal rd2">
     <span class="fcard-icon">&#128137;</span>
     <span class="product-tag hot">Saude</span>
@@ -427,7 +417,6 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   </div>
 
   <!-- Perfumes Arabes -->
-
   <div class="fcard alt reveal rd3">
     <span class="fcard-icon">&#129749;</span>
     <span class="product-tag new">Exclusivo</span>
@@ -442,65 +431,112 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 </div>
 
 <!-- SEPARATOR -->
-
 <div class="sep"></div>
 
-<!-- PRODUCTS GRID 4 colunas -->
-
+<!-- PRODUCTS GRID 4 colunas — LINHA 1 -->
 <div class="products-wrap">
   <div class="products-grid">
 
-```
-<div class="product-card reveal">
-  <span class="product-tag">Beleza</span>
-  <span class="product-icon">&#128167;</span>
-  <div class="product-name">Body Splash</div>
-  <p class="product-desc">Victoria's Secret, Bath &amp; Body Works, Sol de Janeiro. Kits e unit&aacute;rios exclusivos.</p>
-  <div class="product-price-area">
-    <div class="product-price">a partir de<strong>R$ 94</strong></div>
-    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Body%20Splash%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
-  </div>
-</div>
+    <!-- Body Splash -->
+    <div class="product-card reveal">
+      <span class="product-tag">Beleza</span>
+      <span class="product-icon">&#128167;</span>
+      <div class="product-name">Body Splash</div>
+      <p class="product-desc">Victoria's Secret, Bath &amp; Body Works, Sol de Janeiro. Kits e unit&aacute;rios exclusivos.</p>
+      <div class="product-price-area">
+        <div class="product-price">a partir de<strong>R$ 94</strong></div>
+        <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Body%20Splash%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+      </div>
+    </div>
 
-<div class="product-card reveal rd1">
-  <span class="product-tag">Tech</span>
-  <span class="product-icon">&#9889;</span>
-  <div class="product-name">Eletronicos</div>
-  <p class="product-desc">Notebooks, tablets, AirPods, smartwatches, carregadores. Samsung, Sony, JBL e muito mais.</p>
-  <div class="product-price-area">
-    <div class="product-price">a partir de<strong>R$ 188</strong></div>
-    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20eletronicos%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
-  </div>
-</div>
+    <!-- Eletronicos -->
+    <div class="product-card reveal rd1">
+      <span class="product-tag">Tech</span>
+      <span class="product-icon">&#9889;</span>
+      <div class="product-name">Eletronicos</div>
+      <p class="product-desc">Notebooks, tablets, AirPods, smartwatches, carregadores. Samsung, Sony, JBL e muito mais.</p>
+      <div class="product-price-area">
+        <div class="product-price">a partir de<strong>R$ 188</strong></div>
+        <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20eletronicos%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+      </div>
+    </div>
 
-<div class="product-card reveal rd2">
-  <span class="product-tag hot">Esporte</span>
-  <span class="product-icon">&#9917;</span>
-  <div class="product-name">Camisa da Selecao</div>
-  <p class="product-desc">Nike oficial e vers&otilde;es premium. Amarela, azul, goleiro. Todas as edi&ccedil;&otilde;es dispon&iacute;veis.</p>
-  <div class="product-price-area">
-    <div class="product-price">a partir de<strong>R$ 156</strong></div>
-    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20a%20camisa%20da%20Selecao%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
-  </div>
-</div>
+    <!-- Camisa da Selecao -->
+    <div class="product-card reveal rd2">
+      <span class="product-tag hot">Esporte</span>
+      <span class="product-icon">&#9917;</span>
+      <div class="product-name">Camisa da Selecao</div>
+      <p class="product-desc">Nike oficial e vers&otilde;es premium. Amarela, azul, goleiro. Todas as edi&ccedil;&otilde;es dispon&iacute;veis.</p>
+      <div class="product-price-area">
+        <div class="product-price">a partir de<strong>R$ 156</strong></div>
+        <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20a%20camisa%20da%20Selecao%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+      </div>
+    </div>
 
-<div class="product-card reveal rd3">
-  <span class="product-tag new">Bonus</span>
-  <span class="product-icon">&#127867;</span>
-  <div class="product-name">Bebidas Importadas</div>
-  <p class="product-desc">Jack Daniel's, Johnnie Walker, vinhos chilenos e argentinos. Pre&ccedil;os livres de imposto.</p>
-  <div class="product-price-area">
-    <div class="product-price">a partir de<strong>R$ 112</strong></div>
-    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20bebidas%20importadas%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
-  </div>
-</div>
-```
+    <!-- Bebidas Importadas -->
+    <div class="product-card reveal rd3">
+      <span class="product-tag new">Bonus</span>
+      <span class="product-icon">&#127867;</span>
+      <div class="product-name">Bebidas Importadas</div>
+      <p class="product-desc">Jack Daniel's, Johnnie Walker, vinhos chilenos e argentinos. Pre&ccedil;os livres de imposto.</p>
+      <div class="product-price-area">
+        <div class="product-price">a partir de<strong>R$ 112</strong></div>
+        <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20bebidas%20importadas%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+      </div>
+    </div>
+
+    <!-- MacBook -->
+    <div class="product-card reveal">
+      <span class="product-tag new">Apple</span>
+      <span class="product-icon">&#128187;</span>
+      <div class="product-name">MacBook Air</div>
+      <p class="product-desc">MacBook Air M3 e M4. Original lacrado, garantia internacional. At&eacute; 35% mais barato que no Brasil.</p>
+      <div class="product-price-area">
+        <div class="product-price">a partir de<strong>Consulte</strong></div>
+        <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20MacBook%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+      </div>
+    </div>
+
+    <!-- Caixa de Som JBL -->
+    <div class="product-card reveal rd1">
+      <span class="product-tag">Audio</span>
+      <span class="product-icon">&#128266;</span>
+      <div class="product-name">Caixa JBL</div>
+      <p class="product-desc">Flip 7, Charge 6, Boombox 3. Som potente, resistente &agrave; &aacute;gua. Original com garantia.</p>
+      <div class="product-price-area">
+        <div class="product-price">a partir de<strong>R$ 420</strong></div>
+        <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20uma%20caixa%20JBL%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+      </div>
+    </div>
+
+    <!-- AirPods -->
+    <div class="product-card reveal rd2">
+      <span class="product-tag new">Apple</span>
+      <span class="product-icon">&#127911;</span>
+      <div class="product-name">AirPods Pro</div>
+      <p class="product-desc">AirPods Pro 2 e AirPods 4. Cancelamento ativo de ru&iacute;do, &aacute;udio espacial. Original lacrado.</p>
+      <div class="product-price-area">
+        <div class="product-price">a partir de<strong>R$ 890</strong></div>
+        <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20AirPods%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+      </div>
+    </div>
+
+    <!-- Apple Watch -->
+    <div class="product-card reveal rd3">
+      <span class="product-tag new">Apple</span>
+      <span class="product-icon">&#8987;</span>
+      <div class="product-name">Apple Watch</div>
+      <p class="product-desc">Series 10 e Ultra 2. GPS + Cellular, monitor card&iacute;aco. Original com garantia internacional.</p>
+      <div class="product-price-area">
+        <div class="product-price">a partir de<strong>R$ 1.100</strong></div>
+        <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20Apple%20Watch%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+      </div>
+    </div>
 
   </div>
 </div>
 
 <!-- FOOTER -->
-
 <footer>
   <div style="font-size:1.4rem;margin-bottom:0.75rem;">&#127463;&#127479; &#9992; &#127477;&#127486;</div>
   <div class="footer-logo">PARA<span>GUAI</span> SHOP</div>
