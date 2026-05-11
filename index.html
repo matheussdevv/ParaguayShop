@@ -11,6 +11,7 @@
 html { scroll-behavior: smooth; }
 body { background: #0a0a0a; color: #f5f5f0; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
 
+/* HERO */
 .hero {
 min-height: 100vh; background: #0a0a0a;
 display: flex; flex-direction: column; justify-content: center;
@@ -50,7 +51,6 @@ color: rgba(245,245,240,0.5); margin-top: 1.5rem;
 animation: fadeDown 0.6s 0.2s ease both;
 }
 .hero-cta { margin-top: 3rem; animation: fadeDown 0.6s 0.3s ease both; }
-
 .btn-primary {
 background: #00c853; color: #0a0a0a;
 font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
@@ -60,7 +60,6 @@ text-decoration: none; display: inline-block; transition: all 0.2s;
 clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
 .btn-primary:hover { background: #ffd600; transform: translateY(-2px); }
-
 .scroll-hint {
 position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
 display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -73,6 +72,7 @@ background: linear-gradient(to bottom, #00c853, transparent);
 animation: scrollLine 1.5s ease-in-out infinite;
 }
 
+/* TICKER */
 .ticker { background: #00c853; color: #0a0a0a; padding: 0.7rem 0; overflow: hidden; white-space: nowrap; }
 .ticker-inner {
 display: inline-block; animation: ticker 25s linear infinite;
@@ -80,7 +80,8 @@ font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
 font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
 }
 
-.section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; }
+/* SECTION HEADER */
+.section { padding: 5rem 2rem 2rem; max-width: 1400px; margin: 0 auto; }
 .section-label {
 font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem;
 letter-spacing: 0.3em; text-transform: uppercase; color: #00c853;
@@ -89,108 +90,133 @@ margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;
 .section-label::after { content: ‘’; flex: 1; max-width: 60px; height: 1px; background: #00c853; }
 .section-title {
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1; margin-bottom: 3rem;
+font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1; margin-bottom: 0;
 }
 
-.featured-row {
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 1px; background: rgba(255,255,255,0.05);
-border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1px;
-}
-@media(max-width: 700px) { .featured-row { grid-template-columns: 1fr; } }
-
-.featured-card {
-background: #1a1a1a; padding: 2.5rem; position: relative;
-overflow: hidden; min-height: 0;
-display: flex; flex-direction: row; align-items: center; gap: 2rem;
-transition: background 0.3s;
-}
-.featured-card.dark { background: #111; }
-.featured-card:hover { background: #222; }
-.featured-card:hover .featured-icon-big { transform: scale(1.1) rotate(-5deg); }
-
-.featured-icon-wrap {
-flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-width: 120px; height: 120px;
-background: rgba(255,255,255,0.03); border-radius: 16px;
-}
-
-.featured-bg-text {
-position: absolute; top: 50%; right: -1rem;
-transform: translateY(-50%);
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(5rem, 10vw, 9rem);
-color: rgba(255,255,255,0.03); line-height: 1;
-pointer-events: none; white-space: nowrap;
-}
-.featured-icon-big {
-font-size: 4rem; display: block;
-position: relative; z-index: 1; transition: transform 0.3s ease;
-}
-.featured-content { flex: 1; position: relative; z-index: 1; }
-.featured-name {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1;
-}
-.featured-sub {
-font-size: 0.88rem; color: rgba(245,245,240,0.5);
-margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 300; line-height: 1.5;
-}
-.featured-badge {
-position: absolute; top: 1.5rem; right: 1.5rem;
-background: #c62828; color: white; font-family: ‘Bebas Neue’, sans-serif;
-font-size: 0.8rem; padding: 0.25rem 0.7rem; border-radius: 2px;
-}
-
-@media(max-width: 600px) {
-.featured-card { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2rem; }
-.featured-icon-wrap { width: 80px; height: 80px; }
-.featured-icon-big { font-size: 3rem; }
-}
-
+/* PRODUCT TAG */
 .product-tag {
 display: inline-block; background: rgba(0,200,83,0.15); color: #00c853;
 font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.65rem; font-weight: 700;
 letter-spacing: 0.2em; text-transform: uppercase;
-padding: 0.3rem 0.7rem; border-radius: 2px; margin-bottom: 1.5rem; width: fit-content;
+padding: 0.3rem 0.7rem; border-radius: 2px; margin-bottom: 0.75rem; width: fit-content;
 }
 .product-tag.hot { background: rgba(198,40,40,0.2); color: #ef5350; }
 .product-tag.new { background: rgba(255,214,0,0.15); color: #ffd600; }
 
-.products-grid {
-display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05);
+/* FEATURED GRID 2x2 */
+.featured-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: auto auto;
+gap: 1px;
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.06);
+max-width: 1400px;
+margin: 0 2rem;
 }
+@media(max-width: 640px) {
+.featured-grid { grid-template-columns: 1fr; margin: 0 1rem; }
+}
+
+.fcard {
+background: #141414;
+padding: 2rem;
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+position: relative;
+overflow: hidden;
+transition: background 0.25s;
+cursor: pointer;
+}
+.fcard:hover { background: #1e1e1e; }
+.fcard:hover .fcard-icon { transform: scale(1.12) rotate(-6deg); }
+.fcard.dark { background: #0e0e0e; }
+.fcard.dark:hover { background: #181818; }
+
+.fcard-badge {
+position: absolute; top: 1rem; right: 1rem;
+background: #c62828; color: #fff;
+font-family: ‘Bebas Neue’, sans-serif; font-size: 0.75rem;
+padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.05em;
+}
+.fcard-icon {
+font-size: 3rem; display: block; transition: transform 0.3s ease;
+margin-bottom: 0.25rem;
+}
+.fcard-name {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+line-height: 1;
+}
+.fcard-desc {
+font-size: 0.82rem; font-weight: 300;
+color: rgba(245,245,240,0.45); line-height: 1.5;
+flex: 1;
+}
+.fcard-bottom {
+display: flex; align-items: center; justify-content: space-between;
+gap: 1rem; margin-top: 0.75rem; flex-wrap: wrap;
+}
+.fcard-price {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 0.75rem; color: rgba(245,245,240,0.35); line-height: 1.4;
+}
+.fcard-price strong { display: block; font-size: 1.3rem; color: #00c853; font-weight: 700; }
+.btn-enc {
+background: #00c853; color: #0a0a0a;
+font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 0.6rem 1.2rem; text-decoration: none; display: inline-block;
+transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
+clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.btn-enc:hover { background: #ffd600; transform: translateY(-2px); }
+
+/* PRODUCTS GRID — 4 colunas no PC, 2 no tablet, 1 no mobile */
+.products-wrap {
+max-width: 1400px; margin: 1px auto 0; padding: 0 2rem 5rem;
+}
+.products-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1px;
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.06);
+}
+@media(max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width: 500px)  { .products-grid { grid-template-columns: 1fr; } }
+
 .product-card {
-background: #1a1a1a; padding: 2rem; position: relative;
-overflow: hidden; cursor: pointer; transition: background 0.3s;
-display: flex; flex-direction: column; min-height: 320px;
+background: #141414; padding: 1.75rem; position: relative;
+overflow: hidden; cursor: pointer; transition: background 0.25s;
+display: flex; flex-direction: column;
 }
 .product-card::before {
 content: ‘’; position: absolute; bottom: 0; left: 0; right: 0;
 height: 3px; background: #00c853; transform: scaleX(0);
 transform-origin: left; transition: transform 0.3s ease;
 }
-.product-card:hover { background: #2a2a2a; }
+.product-card:hover { background: #1e1e1e; }
 .product-card:hover::before { transform: scaleX(1); }
 .product-card:hover .product-icon { transform: scale(1.1) rotate(-5deg); }
 
-.product-icon { font-size: 3.5rem; margin-bottom: 1.5rem; transition: transform 0.3s ease; display: block; }
-.product-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 2rem; line-height: 1; margin-bottom: 0.75rem; }
-.product-desc { font-size: 0.9rem; font-weight: 300; color: rgba(245,245,240,0.5); line-height: 1.6; flex: 1; }
-.product-price-area { margin-top: 1.5rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
-.product-price { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.8rem; color: rgba(245,245,240,0.4); line-height: 1.4; }
-.product-price strong { display: block; font-size: 1.4rem; color: #00c853; font-weight: 700; }
-
+.product-icon { font-size: 2.8rem; margin-bottom: 1rem; transition: transform 0.3s ease; display: block; }
+.product-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.7rem; line-height: 1; margin-bottom: 0.5rem; }
+.product-desc { font-size: 0.82rem; font-weight: 300; color: rgba(245,245,240,0.45); line-height: 1.55; flex: 1; }
+.product-price-area { margin-top: 1.25rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 0.75rem; }
+.product-price { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; color: rgba(245,245,240,0.35); line-height: 1.4; }
+.product-price strong { display: block; font-size: 1.25rem; color: #00c853; font-weight: 700; }
 .btn-pedir {
 background: #00c853; color: #0a0a0a;
 font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
-font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
-padding: 0.6rem 1.2rem; text-decoration: none; display: inline-block;
+font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 0.55rem 1rem; text-decoration: none; display: inline-block;
 transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
 }
 .btn-pedir:hover { background: #ffd600; transform: translateY(-2px); }
 
+/* FOOTER */
 footer {
 background: #050505; padding: 3rem 2rem;
 text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
@@ -200,14 +226,7 @@ text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
 .footer-sub { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,245,240,0.3); margin-bottom: 1rem; }
 .footer-note { font-size: 0.75rem; color: rgba(245,245,240,0.2); font-weight: 300; }
 
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
-
+/* WHATSAPP */
 .whatsapp-float {
 position: fixed; bottom: 2rem; right: 2rem;
 background: #25d366; color: white;
@@ -218,9 +237,16 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 }
 .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.7); }
 
-@keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes scrollLine { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.rd1 { transition-delay: 0.1s; } .rd2 { transition-delay: 0.2s; }
+.rd3 { transition-delay: 0.3s; } .rd4 { transition-delay: 0.4s; }
+.rd5 { transition-delay: 0.5s; } .rd6 { transition-delay: 0.6s; }
+
+@keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes ticker   { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+@keyframes scrollLine { 0%,100% { opacity:0.3; } 50% { opacity:1; } }
 </style>
 
 </head>
@@ -251,140 +277,135 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 
 <div class="ticker">
   <div class="ticker-inner">
-    FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES IMPORTADOS &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp; FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES IMPORTADOS &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp;
+    FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES ARABES &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp; FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES ARABES &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp;
   </div>
 </div>
 
-<!-- FEATURED -->
+<!-- SECTION HEADER -->
 
-<section id="produtos" style="padding:5rem 0;background:#0a0a0a;">
-  <div class="section" style="padding-bottom:2rem;">
-    <div class="section-label reveal">Faca seu pedido</div>
-    <h2 class="section-title reveal">Escolha<br>o seu</h2>
+<section id="produtos" style="background:#0a0a0a;">
+  <div class="section reveal">
+    <div class="section-label">Faca seu pedido</div>
+    <h2 class="section-title">Escolha<br>o seu</h2>
   </div>
-  <div style="max-width:1400px;margin:0 2rem;border:1px solid rgba(255,255,255,0.05);">
-    <div class="featured-row">
+</section>
 
-```
+<!-- FEATURED 2x2 -->
+
+<div class="featured-grid">
+
   <!-- iPhone 17 -->
-  <div class="featured-card dark reveal">
-    <div class="featured-bg-text">iPHONE</div>
-    <div class="featured-badge">NOVO 2025</div>
-    <div class="featured-icon-wrap">
-      <span class="featured-icon-big">&#128241;</span>
-    </div>
-    <div class="featured-content">
-      <span class="product-tag new">iPhone 17</span>
-      <div class="featured-name">iPhone 17<br><span style="color:#00c853;">Pro Max</span></div>
-      <p class="featured-sub">At&eacute; 40% mais barato que no Brasil. Original, lacrado, com garantia Apple Internacional.</p>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20iPhone%2017%20do%20Paraguai!" target="_blank" class="btn-primary">Quero encomendar</a>
+
+  <div class="fcard dark reveal">
+    <div class="fcard-badge">NOVO 2025</div>
+    <span class="fcard-icon">&#128241;</span>
+    <span class="product-tag new">iPhone 17</span>
+    <div class="fcard-name">iPhone 17<br><span style="color:#00c853;">Pro Max</span></div>
+    <p class="fcard-desc">At&eacute; 40% mais barato que no Brasil. Original, lacrado, com garantia Apple Internacional.</p>
+    <div class="fcard-bottom">
+      <div class="fcard-price">a partir de<strong>Consulte</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20iPhone%2017%20Pro%20Max%20do%20Paraguai!" target="_blank" class="btn-enc">Encomendar</a>
     </div>
   </div>
 
   <!-- PS5 -->
-  <div class="featured-card reveal reveal-delay-1">
-    <div class="featured-bg-text">PS5</div>
-    <div class="featured-icon-wrap">
-      <span class="featured-icon-big">&#127918;</span>
-    </div>
-    <div class="featured-content">
-      <span class="product-tag hot">HOT ITEM</span>
-      <div class="featured-name">PlayStation<br><span style="color:#ffd600;">5 Slim</span></div>
-      <p class="featured-sub">Console + jogos por menos da metade do pre&ccedil;o brasileiro. Vers&atilde;o US com entrada f&iacute;sica.</p>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20PS5%20do%20Paraguai!" target="_blank" class="btn-primary">Quero encomendar</a>
+
+  <div class="fcard reveal rd1">
+    <span class="fcard-icon">&#127918;</span>
+    <span class="product-tag hot">HOT ITEM</span>
+    <div class="fcard-name">PlayStation<br><span style="color:#ffd600;">5 Slim</span></div>
+    <p class="fcard-desc">Console + jogos por menos da metade do pre&ccedil;o brasileiro. Vers&atilde;o US com entrada f&iacute;sica.</p>
+    <div class="fcard-bottom">
+      <div class="fcard-price">a partir de<strong>Consulte</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20PS5%20do%20Paraguai!" target="_blank" class="btn-enc">Encomendar</a>
     </div>
   </div>
 
-</div>
-```
-
-  </div>
-</section>
-
-<!-- PRODUCTS GRID -->
-
-<section style="padding:1px 2rem 5rem;background:#0a0a0a;">
-  <div style="max-width:1400px;margin:2rem auto 0;">
-    <div class="products-grid">
-
-```
   <!-- Mounjaro -->
-  <div class="product-card reveal">
+
+  <div class="fcard dark reveal rd2">
+    <span class="fcard-icon">&#128137;</span>
     <span class="product-tag hot">Saude</span>
-    <span class="product-icon">&#128137;</span>
-    <div class="product-name">Mounjaro</div>
-    <p class="product-desc">Tirzepatida original, com prescri&ccedil;&atilde;o. Valores muito abaixo do mercado brasileiro.</p>
-    <div class="product-price-area">
-      <div class="product-price">a partir de<strong>R$ 1.200</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Mounjaro%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+    <div class="fcard-name">Mounjaro<br><span style="color:#ef5350;">Tirzepatida</span></div>
+    <p class="fcard-desc">Original com prescri&ccedil;&atilde;o. Valores muito abaixo do mercado brasileiro. Um dos itens mais pedidos.</p>
+    <div class="fcard-bottom">
+      <div class="fcard-price">a partir de<strong>R$ 1.200</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Mounjaro%20do%20Paraguai!" target="_blank" class="btn-enc">Encomendar</a>
     </div>
   </div>
 
-  <!-- Perfumes -->
-  <div class="product-card reveal reveal-delay-1">
-    <span class="product-tag">Beleza</span>
-    <span class="product-icon">&#127800;</span>
-    <div class="product-name">Perfumes</div>
-    <p class="product-desc">Chanel, Dior, YSL, Tom Ford, Lanc&ocirc;me. Importados originais, at&eacute; 60% abaixo do Brasil.</p>
-    <div class="product-price-area">
-      <div class="product-price">a partir de<strong>R$ 281</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20perfumes%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
-    </div>
-  </div>
+  <!-- Perfumes Arabes -->
 
-  <!-- Body Splash -->
-  <div class="product-card reveal reveal-delay-2">
-    <span class="product-tag">Beleza</span>
-    <span class="product-icon">&#128167;</span>
-    <div class="product-name">Body Splash</div>
-    <p class="product-desc">Victoria's Secret, Bath &amp; Body Works, Sol de Janeiro. Kits e unit&aacute;rios exclusivos.</p>
-    <div class="product-price-area">
-      <div class="product-price">a partir de<strong>R$ 94</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Body%20Splash%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
-    </div>
-  </div>
-
-  <!-- Eletronicos -->
-  <div class="product-card reveal reveal-delay-3">
-    <span class="product-tag">Tech</span>
-    <span class="product-icon">&#9889;</span>
-    <div class="product-name">Eletronicos</div>
-    <p class="product-desc">Notebooks, tablets, AirPods, smartwatches, carregadores. Samsung, Sony, JBL e muito mais.</p>
-    <div class="product-price-area">
-      <div class="product-price">a partir de<strong>R$ 188</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20eletronicos%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
-    </div>
-  </div>
-
-  <!-- Camisa Selecao -->
-  <div class="product-card reveal reveal-delay-4">
-    <span class="product-tag hot">Esporte</span>
-    <span class="product-icon">&#9917;</span>
-    <div class="product-name">Camisa da Selecao</div>
-    <p class="product-desc">Nike oficial e vers&otilde;es premium. Amarela, azul, goleiro. Todas as edi&ccedil;&otilde;es dispon&iacute;veis.</p>
-    <div class="product-price-area">
-      <div class="product-price">a partir de<strong>R$ 156</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20a%20camisa%20da%20Selecao%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
-    </div>
-  </div>
-
-  <!-- Bebidas -->
-  <div class="product-card reveal reveal-delay-5">
-    <span class="product-tag new">Bonus</span>
-    <span class="product-icon">&#127867;</span>
-    <div class="product-name">Bebidas Importadas</div>
-    <p class="product-desc">Jack Daniel's, Johnnie Walker, vinhos chilenos e argentinos. Pre&ccedil;os livres de imposto.</p>
-    <div class="product-price-area">
-      <div class="product-price">a partir de<strong>R$ 112</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20bebidas%20importadas%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+  <div class="fcard reveal rd3">
+    <span class="fcard-icon">&#129705;</span>
+    <span class="product-tag new">Exclusivo</span>
+    <div class="fcard-name">Perfumes<br><span style="color:#ffd600;">Arabes</span></div>
+    <p class="fcard-desc">Lattafa, Swiss Arabian, Ajmal, Al Haramain. Fr&acirc;ncias intensas e duradouras que encantam.</p>
+    <div class="fcard-bottom">
+      <div class="fcard-price">a partir de<strong>R$ 281</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20perfumes%20arabes%20do%20Paraguai!" target="_blank" class="btn-enc">Encomendar</a>
     </div>
   </div>
 
 </div>
+
+<!-- PRODUCTS GRID 4 colunas -->
+
+<div class="products-wrap">
+  <div class="products-grid">
+
+```
+<!-- Body Splash -->
+<div class="product-card reveal">
+  <span class="product-tag">Beleza</span>
+  <span class="product-icon">&#128167;</span>
+  <div class="product-name">Body Splash</div>
+  <p class="product-desc">Victoria's Secret, Bath &amp; Body Works, Sol de Janeiro. Kits e unit&aacute;rios exclusivos.</p>
+  <div class="product-price-area">
+    <div class="product-price">a partir de<strong>R$ 94</strong></div>
+    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Body%20Splash%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+  </div>
+</div>
+
+<!-- Eletronicos -->
+<div class="product-card reveal rd1">
+  <span class="product-tag">Tech</span>
+  <span class="product-icon">&#9889;</span>
+  <div class="product-name">Eletronicos</div>
+  <p class="product-desc">Notebooks, tablets, AirPods, smartwatches, carregadores. Samsung, Sony, JBL e muito mais.</p>
+  <div class="product-price-area">
+    <div class="product-price">a partir de<strong>R$ 188</strong></div>
+    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20eletronicos%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+  </div>
+</div>
+
+<!-- Camisa Selecao -->
+<div class="product-card reveal rd2">
+  <span class="product-tag hot">Esporte</span>
+  <span class="product-icon">&#9917;</span>
+  <div class="product-name">Camisa da Selecao</div>
+  <p class="product-desc">Nike oficial e vers&otilde;es premium. Amarela, azul, goleiro. Todas as edi&ccedil;&otilde;es dispon&iacute;veis.</p>
+  <div class="product-price-area">
+    <div class="product-price">a partir de<strong>R$ 156</strong></div>
+    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20a%20camisa%20da%20Selecao%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+  </div>
+</div>
+
+<!-- Bebidas -->
+<div class="product-card reveal rd3">
+  <span class="product-tag new">Bonus</span>
+  <span class="product-icon">&#127867;</span>
+  <div class="product-name">Bebidas Importadas</div>
+  <p class="product-desc">Jack Daniel's, Johnnie Walker, vinhos chilenos e argentinos. Pre&ccedil;os livres de imposto.</p>
+  <div class="product-price-area">
+    <div class="product-price">a partir de<strong>R$ 112</strong></div>
+    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20bebidas%20importadas%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+  </div>
+</div>
 ```
 
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 
@@ -392,7 +413,7 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   <div style="font-size:1.5rem;margin-bottom:1rem;">&#127463;&#127479; &#9992; &#127477;&#127486;</div>
   <div class="footer-logo">PARA<span>GUAI</span> SHOP</div>
   <div class="footer-sub">Encomendas direto do Paraguai &bull; Me chama no WhatsApp</div>
-  <p class="footer-note">Pre&ccedil;os em d&oacute;lar. Frete e prazo combinados no pedido.</p>
+  <p class="footer-note">Pre&ccedil;os em reais. Frete e prazo combinados no pedido.</p>
 </footer>
 
 <!-- WHATSAPP FLUTUANTE -->
@@ -402,15 +423,15 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  document.querySelectorAll('.product-card, .featured-card').forEach(card => {
+  document.querySelectorAll('.product-card, .fcard').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width - 0.5;
       const y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = `perspective(800px) rotateY(${x*4}deg) rotateX(${-y*4}deg)`;
+      card.style.transform = `perspective(800px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`;
     });
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
