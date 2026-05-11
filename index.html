@@ -9,108 +9,181 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: #0a0a0a; color: #f5f5f0; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
 
-/* HERO */
+body {
+background: #0f1a2e;
+color: #f0efe8;
+font-family: ‘Barlow’, sans-serif;
+overflow-x: hidden;
+}
+
+/* Fundo global com gradiente sutil inspirado na bandeira do Paraguai */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background:
+radial-gradient(ellipse 120% 60% at 0% 50%, rgba(190,20,20,0.07) 0%, transparent 60%),
+radial-gradient(ellipse 100% 80% at 100% 20%, rgba(0,48,135,0.12) 0%, transparent 60%),
+radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,160,70,0.06) 0%, transparent 70%);
+pointer-events: none;
+z-index: 0;
+}
+
+/* Tudo acima do body::before */
+.hero, .ticker, section, .featured-grid, .products-wrap, footer {
+position: relative;
+z-index: 1;
+}
+
+/* ========= HERO ========= */
 .hero {
-min-height: 100vh; background: #0a0a0a;
+min-height: 100vh;
 display: flex; flex-direction: column; justify-content: center;
 align-items: center; text-align: center;
-position: relative; overflow: hidden; padding: 2rem;
+padding: 2rem; overflow: hidden;
 }
-.hero::before {
-content: ‘’; position: absolute; inset: 0;
-background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,200,83,0.12) 0%, transparent 70%),
-radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255,214,0,0.06) 0%, transparent 60%);
+
+/* Listras da bandeira do Paraguai — sutis no fundo do hero */
+.hero::after {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(
+180deg,
+rgba(190,20,20,0.06) 0%,
+rgba(190,20,20,0.06) 33.3%,
+rgba(240,238,230,0.03) 33.3%,
+rgba(240,238,230,0.03) 66.6%,
+rgba(0,48,135,0.07) 66.6%,
+rgba(0,48,135,0.07) 100%
+);
 pointer-events: none;
 }
-.flag-stripe {
-position: absolute; top: 0; left: 0; right: 0; height: 6px;
-background: linear-gradient(90deg, #c62828 33.3%, #f5f5f0 33.3%, #f5f5f0 66.6%, #003087 66.6%);
+
+.flag-bar {
+position: absolute; top: 0; left: 0; right: 0; height: 5px;
+background: linear-gradient(90deg,
+#be1414 33.33%,
+#f0efe8 33.33%, #f0efe8 66.66%,
+#003087 66.66%);
+z-index: 2;
 }
+
 .hero-badge {
-display: inline-block; background: #00c853; color: #0a0a0a;
+display: inline-block;
+background: rgba(0,160,70,0.18);
+border: 1px solid rgba(0,160,70,0.4);
+color: #2ecc71;
 font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
-font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
 padding: 0.4rem 1.2rem; border-radius: 2px; margin-bottom: 2rem;
 animation: fadeDown 0.6s ease both;
+position: relative; z-index: 2;
 }
+
 .hero-title {
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(4rem, 14vw, 12rem);
+font-size: clamp(4rem, 14vw, 11rem);
 line-height: 0.85; letter-spacing: -0.02em;
 animation: fadeDown 0.6s 0.1s ease both;
+position: relative; z-index: 2;
 }
 .hero-title span { display: block; }
-.hero-title .outline { -webkit-text-stroke: 2px #f5f5f0; color: transparent; }
+.hero-title .outline { -webkit-text-stroke: 2px #f0efe8; color: transparent; }
+
 .hero-sub {
 font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(1rem, 3vw, 1.5rem); font-weight: 300;
-letter-spacing: 0.15em; text-transform: uppercase;
-color: rgba(245,245,240,0.5); margin-top: 1.5rem;
+font-size: clamp(0.9rem, 2.5vw, 1.4rem); font-weight: 300;
+letter-spacing: 0.18em; text-transform: uppercase;
+color: rgba(240,239,232,0.45); margin-top: 1.5rem;
 animation: fadeDown 0.6s 0.2s ease both;
+position: relative; z-index: 2;
 }
-.hero-cta { margin-top: 3rem; animation: fadeDown 0.6s 0.3s ease both; }
+
+.hero-cta { margin-top: 3rem; animation: fadeDown 0.6s 0.3s ease both; position: relative; z-index: 2; }
+
 .btn-primary {
-background: #00c853; color: #0a0a0a;
+background: #00a046; color: #fff;
 font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
-font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase;
+font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase;
 padding: 1rem 2.5rem; border: none; cursor: pointer;
 text-decoration: none; display: inline-block; transition: all 0.2s;
 clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
-.btn-primary:hover { background: #ffd600; transform: translateY(-2px); }
+.btn-primary:hover { background: #c8a600; transform: translateY(-2px); }
+
 .scroll-hint {
 position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
 display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-color: rgba(245,245,240,0.3); font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+color: rgba(240,239,232,0.25);
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+z-index: 2;
 }
 .scroll-line {
-width: 1px; height: 40px;
-background: linear-gradient(to bottom, #00c853, transparent);
+width: 1px; height: 36px;
+background: linear-gradient(to bottom, #00a046, transparent);
 animation: scrollLine 1.5s ease-in-out infinite;
 }
 
-/* TICKER */
-.ticker { background: #00c853; color: #0a0a0a; padding: 0.7rem 0; overflow: hidden; white-space: nowrap; }
+/* ========= TICKER ========= */
+.ticker {
+background: #00a046; color: #fff;
+padding: 0.65rem 0; overflow: hidden; white-space: nowrap;
+border-top: 1px solid rgba(255,255,255,0.1);
+border-bottom: 1px solid rgba(0,0,0,0.2);
+}
 .ticker-inner {
-display: inline-block; animation: ticker 25s linear infinite;
+display: inline-block; animation: ticker 28s linear infinite;
 font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
-font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
+font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase;
 }
 
-/* SECTION HEADER */
-.section { padding: 5rem 2rem 2rem; max-width: 1400px; margin: 0 auto; }
-.section-label {
-font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem;
-letter-spacing: 0.3em; text-transform: uppercase; color: #00c853;
-margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;
+/* ========= SECTION HEADER ========= */
+.section {
+padding: 4rem 2rem 2rem;
+max-width: 1400px; margin: 0 auto;
 }
-.section-label::after { content: ‘’; flex: 1; max-width: 60px; height: 1px; background: #00c853; }
+.section-label {
+font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.72rem;
+letter-spacing: 0.3em; text-transform: uppercase; color: #2ecc71;
+margin-bottom: 0.75rem; display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after { content: ‘’; width: 50px; height: 1px; background: #2ecc71; }
 .section-title {
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1; margin-bottom: 0;
+font-size: clamp(2.2rem, 5vw, 4.5rem); line-height: 1;
 }
 
-/* PRODUCT TAG */
+/* ========= TAG ========= */
 .product-tag {
-display: inline-block; background: rgba(0,200,83,0.15); color: #00c853;
-font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.65rem; font-weight: 700;
-letter-spacing: 0.2em; text-transform: uppercase;
-padding: 0.3rem 0.7rem; border-radius: 2px; margin-bottom: 0.75rem; width: fit-content;
+display: inline-block;
+background: rgba(0,160,70,0.12);
+border: 1px solid rgba(0,160,70,0.25);
+color: #2ecc71;
+font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.62rem; font-weight: 700;
+letter-spacing: 0.22em; text-transform: uppercase;
+padding: 0.28rem 0.65rem; border-radius: 2px; margin-bottom: 0.75rem; width: fit-content;
 }
-.product-tag.hot { background: rgba(198,40,40,0.2); color: #ef5350; }
-.product-tag.new { background: rgba(255,214,0,0.15); color: #ffd600; }
+.product-tag.hot {
+background: rgba(190,20,20,0.12);
+border-color: rgba(190,20,20,0.3);
+color: #e05555;
+}
+.product-tag.new {
+background: rgba(200,166,0,0.12);
+border-color: rgba(200,166,0,0.3);
+color: #f0c400;
+}
 
-/* FEATURED GRID 2x2 */
+/* ========= FEATURED GRID 2x2 ========= */
 .featured-grid {
 display: grid;
 grid-template-columns: 1fr 1fr;
-grid-template-rows: auto auto;
 gap: 1px;
 background: rgba(255,255,255,0.06);
-border: 1px solid rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.07);
 max-width: 1400px;
 margin: 0 2rem;
 }
@@ -119,40 +192,43 @@ margin: 0 2rem;
 }
 
 .fcard {
-background: #141414;
+background: rgba(15,26,46,0.85);
 padding: 2rem;
-display: flex;
-flex-direction: column;
-gap: 0.5rem;
-position: relative;
-overflow: hidden;
-transition: background 0.25s;
-cursor: pointer;
+display: flex; flex-direction: column; gap: 0.4rem;
+position: relative; overflow: hidden;
+transition: background 0.25s; cursor: pointer;
 }
-.fcard:hover { background: #1e1e1e; }
+.fcard::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: linear-gradient(135deg, rgba(0,48,135,0.08) 0%, transparent 60%);
+pointer-events: none;
+}
+.fcard:hover { background: rgba(20,36,62,0.95); }
 .fcard:hover .fcard-icon { transform: scale(1.12) rotate(-6deg); }
-.fcard.dark { background: #0e0e0e; }
-.fcard.dark:hover { background: #181818; }
+.fcard.alt { background: rgba(20,14,14,0.85); }
+.fcard.alt::before {
+background: linear-gradient(135deg, rgba(190,20,20,0.07) 0%, transparent 60%);
+}
+.fcard.alt:hover { background: rgba(28,18,18,0.95); }
 
 .fcard-badge {
 position: absolute; top: 1rem; right: 1rem;
-background: #c62828; color: #fff;
-font-family: ‘Bebas Neue’, sans-serif; font-size: 0.75rem;
-padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.05em;
+background: #be1414; color: #fff;
+font-family: ‘Bebas Neue’, sans-serif; font-size: 0.72rem;
+padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.06em;
 }
 .fcard-icon {
-font-size: 3rem; display: block; transition: transform 0.3s ease;
-margin-bottom: 0.25rem;
+font-size: 2.8rem; display: block;
+transition: transform 0.3s ease; margin-bottom: 0.25rem;
 }
 .fcard-name {
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-line-height: 1;
+font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.05;
 }
 .fcard-desc {
 font-size: 0.82rem; font-weight: 300;
-color: rgba(245,245,240,0.45); line-height: 1.5;
-flex: 1;
+color: rgba(240,239,232,0.42); line-height: 1.55; flex: 1;
 }
 .fcard-bottom {
 display: flex; align-items: center; justify-content: space-between;
@@ -160,93 +236,109 @@ gap: 1rem; margin-top: 0.75rem; flex-wrap: wrap;
 }
 .fcard-price {
 font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 0.75rem; color: rgba(245,245,240,0.35); line-height: 1.4;
+font-size: 0.72rem; color: rgba(240,239,232,0.32); line-height: 1.4;
 }
-.fcard-price strong { display: block; font-size: 1.3rem; color: #00c853; font-weight: 700; }
+.fcard-price strong { display: block; font-size: 1.25rem; color: #2ecc71; font-weight: 700; }
 .btn-enc {
-background: #00c853; color: #0a0a0a;
+background: #00a046; color: #fff;
 font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
-font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-padding: 0.6rem 1.2rem; text-decoration: none; display: inline-block;
+font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 0.58rem 1.15rem; text-decoration: none; display: inline-block;
 transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
-clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
 }
-.btn-enc:hover { background: #ffd600; transform: translateY(-2px); }
+.btn-enc:hover { background: #c8a600; transform: translateY(-2px); }
 
-/* PRODUCTS GRID — 4 colunas no PC, 2 no tablet, 1 no mobile */
+/* ========= SEPARATOR ========= */
+.sep {
+height: 2.5rem;
+background: transparent;
+}
+
+/* ========= PRODUCTS GRID 4 col ========= */
 .products-wrap {
-max-width: 1400px; margin: 1px auto 0; padding: 0 2rem 5rem;
+max-width: 1400px; margin: 0 auto; padding: 0 2rem 5rem;
 }
 .products-grid {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
 gap: 1px;
 background: rgba(255,255,255,0.06);
-border: 1px solid rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.07);
 }
 @media(max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
 @media(max-width: 500px)  { .products-grid { grid-template-columns: 1fr; } }
 
 .product-card {
-background: #141414; padding: 1.75rem; position: relative;
+background: rgba(15,26,46,0.85);
+padding: 1.75rem; position: relative;
 overflow: hidden; cursor: pointer; transition: background 0.25s;
 display: flex; flex-direction: column;
 }
 .product-card::before {
 content: ‘’; position: absolute; bottom: 0; left: 0; right: 0;
-height: 3px; background: #00c853; transform: scaleX(0);
+height: 2px; background: #00a046; transform: scaleX(0);
 transform-origin: left; transition: transform 0.3s ease;
 }
-.product-card:hover { background: #1e1e1e; }
+.product-card::after {
+content: ‘’;
+position: absolute; inset: 0;
+background: linear-gradient(135deg, rgba(0,48,135,0.06) 0%, transparent 55%);
+pointer-events: none;
+}
+.product-card:hover { background: rgba(20,36,62,0.95); }
 .product-card:hover::before { transform: scaleX(1); }
 .product-card:hover .product-icon { transform: scale(1.1) rotate(-5deg); }
 
-.product-icon { font-size: 2.8rem; margin-bottom: 1rem; transition: transform 0.3s ease; display: block; }
-.product-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.7rem; line-height: 1; margin-bottom: 0.5rem; }
-.product-desc { font-size: 0.82rem; font-weight: 300; color: rgba(245,245,240,0.45); line-height: 1.55; flex: 1; }
-.product-price-area { margin-top: 1.25rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 0.75rem; }
-.product-price { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; color: rgba(245,245,240,0.35); line-height: 1.4; }
-.product-price strong { display: block; font-size: 1.25rem; color: #00c853; font-weight: 700; }
+.product-icon { font-size: 2.5rem; margin-bottom: 0.85rem; transition: transform 0.3s ease; display: block; position: relative; z-index: 1; }
+.product-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.6rem; line-height: 1; margin-bottom: 0.4rem; position: relative; z-index: 1; }
+.product-desc { font-size: 0.8rem; font-weight: 300; color: rgba(240,239,232,0.42); line-height: 1.55; flex: 1; position: relative; z-index: 1; }
+.product-price-area { margin-top: 1.1rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 0.75rem; position: relative; z-index: 1; }
+.product-price { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.72rem; color: rgba(240,239,232,0.32); line-height: 1.4; }
+.product-price strong { display: block; font-size: 1.2rem; color: #2ecc71; font-weight: 700; }
 .btn-pedir {
-background: #00c853; color: #0a0a0a;
+background: #00a046; color: #fff;
 font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
-font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-padding: 0.55rem 1rem; text-decoration: none; display: inline-block;
+font-size: 0.73rem; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 0.5rem 0.95rem; text-decoration: none; display: inline-block;
 transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
 }
-.btn-pedir:hover { background: #ffd600; transform: translateY(-2px); }
+.btn-pedir:hover { background: #c8a600; transform: translateY(-2px); }
 
-/* FOOTER */
+/* ========= FOOTER ========= */
 footer {
-background: #050505; padding: 3rem 2rem;
-text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
+background: rgba(8,14,26,0.95);
+padding: 3rem 2rem; text-align: center;
+border-top: 1px solid rgba(255,255,255,0.06);
+position: relative; z-index: 1;
 }
-.footer-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.5rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-.footer-logo span { color: #00c853; }
-.footer-sub { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,245,240,0.3); margin-bottom: 1rem; }
-.footer-note { font-size: 0.75rem; color: rgba(245,245,240,0.2); font-weight: 300; }
+.footer-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.4rem; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+.footer-logo span { color: #2ecc71; }
+.footer-sub { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,239,232,0.25); margin-bottom: 0.75rem; }
+.footer-note { font-size: 0.72rem; color: rgba(240,239,232,0.15); font-weight: 300; }
 
-/* WHATSAPP */
+/* ========= WHATSAPP ========= */
 .whatsapp-float {
 position: fixed; bottom: 2rem; right: 2rem;
 background: #25d366; color: white;
-width: 60px; height: 60px; border-radius: 50%;
+width: 58px; height: 58px; border-radius: 50%;
 display: flex; align-items: center; justify-content: center;
-font-size: 2rem; box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+font-size: 1.9rem; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
 z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
 }
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.7); }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
 
-/* REVEAL */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+/* ========= REVEAL ========= */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.rd1 { transition-delay: 0.1s; } .rd2 { transition-delay: 0.2s; }
-.rd3 { transition-delay: 0.3s; } .rd4 { transition-delay: 0.4s; }
-.rd5 { transition-delay: 0.5s; } .rd6 { transition-delay: 0.6s; }
+.rd1 { transition-delay: 0.08s; } .rd2 { transition-delay: 0.16s; }
+.rd3 { transition-delay: 0.24s; } .rd4 { transition-delay: 0.32s; }
+.rd5 { transition-delay: 0.4s; }
 
-@keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+/* ========= ANIMATIONS ========= */
+@keyframes fadeDown { from { opacity:0; transform:translateY(-18px); } to { opacity:1; transform:translateY(0); } }
 @keyframes ticker   { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-@keyframes scrollLine { 0%,100% { opacity:0.3; } 50% { opacity:1; } }
+@keyframes scrollLine { 0%,100% { opacity:0.2; } 50% { opacity:0.8; } }
 </style>
 
 </head>
@@ -255,12 +347,12 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 <!-- HERO -->
 
 <section class="hero">
-  <div class="flag-stripe"></div>
+  <div class="flag-bar"></div>
   <div class="hero-badge">&#128293; Encomendas abertas &mdash; Paraguai</div>
   <h1 class="hero-title">
     <span class="outline">Voc&ecirc;</span>
     <span>quer,</span>
-    <span style="color:#00c853;">eu</span>
+    <span style="color:#2ecc71;">eu</span>
     <span>trago</span>
   </h1>
   <p class="hero-sub">Pe&ccedil;a agora &bull; Pague menos &bull; Receba em m&atilde;os</p>
@@ -283,7 +375,7 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 
 <!-- SECTION HEADER -->
 
-<section id="produtos" style="background:#0a0a0a;">
+<section id="produtos" style="background:transparent;">
   <div class="section reveal">
     <div class="section-label">Faca seu pedido</div>
     <h2 class="section-title">Escolha<br>o seu</h2>
@@ -296,14 +388,14 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 
   <!-- iPhone 17 -->
 
-  <div class="fcard dark reveal">
+  <div class="fcard alt reveal">
     <div class="fcard-badge">NOVO 2025</div>
     <span class="fcard-icon">&#128241;</span>
     <span class="product-tag new">iPhone 17</span>
-    <div class="fcard-name">iPhone 17<br><span style="color:#00c853;">Pro Max</span></div>
+    <div class="fcard-name">iPhone 17<br><span style="color:#2ecc71;">Pro Max</span></div>
     <p class="fcard-desc">At&eacute; 40% mais barato que no Brasil. Original, lacrado, com garantia Apple Internacional.</p>
     <div class="fcard-bottom">
-      <div class="fcard-price">a partir de<strong>Consulte</strong></div>
+      <div class="fcard-price">pre&ccedil;o<strong>Consulte</strong></div>
       <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20iPhone%2017%20Pro%20Max%20do%20Paraguai!" target="_blank" class="btn-enc">Encomendar</a>
     </div>
   </div>
@@ -313,21 +405,21 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   <div class="fcard reveal rd1">
     <span class="fcard-icon">&#127918;</span>
     <span class="product-tag hot">HOT ITEM</span>
-    <div class="fcard-name">PlayStation<br><span style="color:#ffd600;">5 Slim</span></div>
+    <div class="fcard-name">PlayStation<br><span style="color:#f0c400;">5 Slim</span></div>
     <p class="fcard-desc">Console + jogos por menos da metade do pre&ccedil;o brasileiro. Vers&atilde;o US com entrada f&iacute;sica.</p>
     <div class="fcard-bottom">
-      <div class="fcard-price">a partir de<strong>Consulte</strong></div>
+      <div class="fcard-price">pre&ccedil;o<strong>Consulte</strong></div>
       <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20PS5%20do%20Paraguai!" target="_blank" class="btn-enc">Encomendar</a>
     </div>
   </div>
 
   <!-- Mounjaro -->
 
-  <div class="fcard dark reveal rd2">
+  <div class="fcard reveal rd2">
     <span class="fcard-icon">&#128137;</span>
     <span class="product-tag hot">Saude</span>
-    <div class="fcard-name">Mounjaro<br><span style="color:#ef5350;">Tirzepatida</span></div>
-    <p class="fcard-desc">Original com prescri&ccedil;&atilde;o. Valores muito abaixo do mercado brasileiro. Um dos itens mais pedidos.</p>
+    <div class="fcard-name">Mounjaro<br><span style="color:#e05555;">Tirzepatida</span></div>
+    <p class="fcard-desc">Original com prescri&ccedil;&atilde;o. Valores muito abaixo do mercado brasileiro. Item mais pedido.</p>
     <div class="fcard-bottom">
       <div class="fcard-price">a partir de<strong>R$ 1.200</strong></div>
       <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Mounjaro%20do%20Paraguai!" target="_blank" class="btn-enc">Encomendar</a>
@@ -336,11 +428,11 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 
   <!-- Perfumes Arabes -->
 
-  <div class="fcard reveal rd3">
-    <span class="fcard-icon">&#129705;</span>
+  <div class="fcard alt reveal rd3">
+    <span class="fcard-icon">&#129749;</span>
     <span class="product-tag new">Exclusivo</span>
-    <div class="fcard-name">Perfumes<br><span style="color:#ffd600;">Arabes</span></div>
-    <p class="fcard-desc">Lattafa, Swiss Arabian, Ajmal, Al Haramain. Fr&acirc;ncias intensas e duradouras que encantam.</p>
+    <div class="fcard-name">Perfumes<br><span style="color:#f0c400;">Arabes</span></div>
+    <p class="fcard-desc">Lattafa, Swiss Arabian, Ajmal, Al Haramain. Fr&acirc;ncias intensas e duradouras.</p>
     <div class="fcard-bottom">
       <div class="fcard-price">a partir de<strong>R$ 281</strong></div>
       <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20perfumes%20arabes%20do%20Paraguai!" target="_blank" class="btn-enc">Encomendar</a>
@@ -349,13 +441,16 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 
 </div>
 
+<!-- SEPARATOR -->
+
+<div class="sep"></div>
+
 <!-- PRODUCTS GRID 4 colunas -->
 
 <div class="products-wrap">
   <div class="products-grid">
 
 ```
-<!-- Body Splash -->
 <div class="product-card reveal">
   <span class="product-tag">Beleza</span>
   <span class="product-icon">&#128167;</span>
@@ -367,7 +462,6 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   </div>
 </div>
 
-<!-- Eletronicos -->
 <div class="product-card reveal rd1">
   <span class="product-tag">Tech</span>
   <span class="product-icon">&#9889;</span>
@@ -379,7 +473,6 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   </div>
 </div>
 
-<!-- Camisa Selecao -->
 <div class="product-card reveal rd2">
   <span class="product-tag hot">Esporte</span>
   <span class="product-icon">&#9917;</span>
@@ -391,7 +484,6 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   </div>
 </div>
 
-<!-- Bebidas -->
 <div class="product-card reveal rd3">
   <span class="product-tag new">Bonus</span>
   <span class="product-icon">&#127867;</span>
@@ -410,20 +502,18 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
 <!-- FOOTER -->
 
 <footer>
-  <div style="font-size:1.5rem;margin-bottom:1rem;">&#127463;&#127479; &#9992; &#127477;&#127486;</div>
+  <div style="font-size:1.4rem;margin-bottom:0.75rem;">&#127463;&#127479; &#9992; &#127477;&#127486;</div>
   <div class="footer-logo">PARA<span>GUAI</span> SHOP</div>
   <div class="footer-sub">Encomendas direto do Paraguai &bull; Me chama no WhatsApp</div>
   <p class="footer-note">Pre&ccedil;os em reais. Frete e prazo combinados no pedido.</p>
 </footer>
-
-<!-- WHATSAPP FLUTUANTE -->
 
 <a href="https://wa.me/5511969038584?text=Oi!%20Vi%20sua%20pagina%20e%20quero%20fazer%20um%20pedido%20do%20Paraguai!" target="_blank" class="whatsapp-float">💬</a>
 
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   document.querySelectorAll('.product-card, .fcard').forEach(card => {
@@ -431,7 +521,7 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width - 0.5;
       const y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = `perspective(800px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`;
+      card.style.transform = `perspective(900px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`;
     });
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
