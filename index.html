@@ -100,39 +100,52 @@ border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1px;
 @media(max-width: 700px) { .featured-row { grid-template-columns: 1fr; } }
 
 .featured-card {
-background: #1a1a1a; padding: 3rem; position: relative;
-overflow: hidden; min-height: 400px;
-display: flex; flex-direction: column; justify-content: flex-end;
+background: #1a1a1a; padding: 2.5rem; position: relative;
+overflow: hidden; min-height: 0;
+display: flex; flex-direction: row; align-items: center; gap: 2rem;
 transition: background 0.3s;
 }
 .featured-card.dark { background: #111; }
 .featured-card:hover { background: #222; }
 .featured-card:hover .featured-icon-big { transform: scale(1.1) rotate(-5deg); }
 
+.featured-icon-wrap {
+flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+width: 120px; height: 120px;
+background: rgba(255,255,255,0.03); border-radius: 16px;
+}
+
 .featured-bg-text {
-position: absolute; top: -1rem; right: -1rem;
+position: absolute; top: 50%; right: -1rem;
+transform: translateY(-50%);
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(6rem, 14vw, 12rem);
+font-size: clamp(5rem, 10vw, 9rem);
 color: rgba(255,255,255,0.03); line-height: 1;
 pointer-events: none; white-space: nowrap;
 }
 .featured-icon-big {
-font-size: 5rem; margin-bottom: 2rem; display: block;
+font-size: 4rem; display: block;
 position: relative; z-index: 1; transition: transform 0.3s ease;
 }
+.featured-content { flex: 1; position: relative; z-index: 1; }
 .featured-name {
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; position: relative; z-index: 1;
+font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1;
 }
 .featured-sub {
-font-size: 0.9rem; color: rgba(245,245,240,0.5);
-margin-top: 0.5rem; margin-bottom: 1.5rem;
-position: relative; z-index: 1; font-weight: 300;
+font-size: 0.88rem; color: rgba(245,245,240,0.5);
+margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 300; line-height: 1.5;
 }
 .featured-badge {
-position: absolute; top: 2rem; right: 2rem;
+position: absolute; top: 1.5rem; right: 1.5rem;
 background: #c62828; color: white; font-family: ‘Bebas Neue’, sans-serif;
-font-size: 0.9rem; padding: 0.3rem 0.8rem; border-radius: 2px;
+font-size: 0.8rem; padding: 0.25rem 0.7rem; border-radius: 2px;
+}
+
+@media(max-width: 600px) {
+.featured-card { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2rem; }
+.featured-icon-wrap { width: 80px; height: 80px; }
+.featured-icon-big { font-size: 3rem; }
 }
 
 .product-tag {
@@ -257,21 +270,29 @@ z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s
   <div class="featured-card dark reveal">
     <div class="featured-bg-text">iPHONE</div>
     <div class="featured-badge">NOVO 2025</div>
-    <span class="featured-icon-big">&#128241;</span>
-    <span class="product-tag new" style="position:relative;z-index:1;">iPhone 17</span>
-    <div class="featured-name" style="position:relative;z-index:1;">iPhone 17<br><span style="color:#00c853;">Pro Max</span></div>
-    <p class="featured-sub">At&eacute; 40% mais barato que no Brasil. Original, lacrado, com garantia Apple Internacional.</p>
-    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20iPhone%2017%20do%20Paraguai!" target="_blank" class="btn-primary" style="width:fit-content;position:relative;z-index:1;">Quero encomendar</a>
+    <div class="featured-icon-wrap">
+      <span class="featured-icon-big">&#128241;</span>
+    </div>
+    <div class="featured-content">
+      <span class="product-tag new">iPhone 17</span>
+      <div class="featured-name">iPhone 17<br><span style="color:#00c853;">Pro Max</span></div>
+      <p class="featured-sub">At&eacute; 40% mais barato que no Brasil. Original, lacrado, com garantia Apple Internacional.</p>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20iPhone%2017%20do%20Paraguai!" target="_blank" class="btn-primary">Quero encomendar</a>
+    </div>
   </div>
 
   <!-- PS5 -->
   <div class="featured-card reveal reveal-delay-1">
     <div class="featured-bg-text">PS5</div>
-    <span class="featured-icon-big">&#127918;</span>
-    <span class="product-tag hot" style="position:relative;z-index:1;">HOT ITEM</span>
-    <div class="featured-name" style="position:relative;z-index:1;">PlayStation<br><span style="color:#ffd600;">5 Slim</span></div>
-    <p class="featured-sub">Console + jogos por menos da metade do pre&ccedil;o brasileiro. Vers&atilde;o US com entrada f&iacute;sica.</p>
-    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20PS5%20do%20Paraguai!" target="_blank" class="btn-primary" style="width:fit-content;position:relative;z-index:1;">Quero encomendar</a>
+    <div class="featured-icon-wrap">
+      <span class="featured-icon-big">&#127918;</span>
+    </div>
+    <div class="featured-content">
+      <span class="product-tag hot">HOT ITEM</span>
+      <div class="featured-name">PlayStation<br><span style="color:#ffd600;">5 Slim</span></div>
+      <p class="featured-sub">Console + jogos por menos da metade do pre&ccedil;o brasileiro. Vers&atilde;o US com entrada f&iacute;sica.</p>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20PS5%20do%20Paraguai!" target="_blank" class="btn-primary">Quero encomendar</a>
+    </div>
   </div>
 
 </div>
