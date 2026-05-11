@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paraguay Shop - Voce quer, eu trago</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: #0a0a0a; color: #f5f5f0; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+.hero {
+min-height: 100vh; background: #0a0a0a;
+display: flex; flex-direction: column; justify-content: center;
+align-items: center; text-align: center;
+position: relative; overflow: hidden; padding: 2rem;
+}
+.hero::before {
+content: ‘’; position: absolute; inset: 0;
+background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,200,83,0.12) 0%, transparent 70%),
+radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255,214,0,0.06) 0%, transparent 60%);
+pointer-events: none;
+}
+.flag-stripe {
+position: absolute; top: 0; left: 0; right: 0; height: 6px;
+background: linear-gradient(90deg, #c62828 33.3%, #f5f5f0 33.3%, #f5f5f0 66.6%, #003087 66.6%);
+}
+.hero-badge {
+display: inline-block; background: #00c853; color: #0a0a0a;
+font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+padding: 0.4rem 1.2rem; border-radius: 2px; margin-bottom: 2rem;
+animation: fadeDown 0.6s ease both;
+}
+.hero-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(4rem, 14vw, 12rem);
+line-height: 0.85; letter-spacing: -0.02em;
+animation: fadeDown 0.6s 0.1s ease both;
+}
+.hero-title span { display: block; }
+.hero-title .outline { -webkit-text-stroke: 2px #f5f5f0; color: transparent; }
+.hero-sub {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: clamp(1rem, 3vw, 1.5rem); font-weight: 300;
+letter-spacing: 0.15em; text-transform: uppercase;
+color: rgba(245,245,240,0.5); margin-top: 1.5rem;
+animation: fadeDown 0.6s 0.2s ease both;
+}
+.hero-cta { margin-top: 3rem; animation: fadeDown 0.6s 0.3s ease both; }
+
+.btn-primary {
+background: #00c853; color: #0a0a0a;
+font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 1rem 2.5rem; border: none; cursor: pointer;
+text-decoration: none; display: inline-block; transition: all 0.2s;
+clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-primary:hover { background: #ffd600; transform: translateY(-2px); }
+
+.scroll-hint {
+position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+color: rgba(245,245,240,0.3); font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.scroll-line {
+width: 1px; height: 40px;
+background: linear-gradient(to bottom, #00c853, transparent);
+animation: scrollLine 1.5s ease-in-out infinite;
+}
+
+.ticker { background: #00c853; color: #0a0a0a; padding: 0.7rem 0; overflow: hidden; white-space: nowrap; }
+.ticker-inner {
+display: inline-block; animation: ticker 25s linear infinite;
+font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
+}
+
+.section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; }
+.section-label {
+font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem;
+letter-spacing: 0.3em; text-transform: uppercase; color: #00c853;
+margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after { content: ‘’; flex: 1; max-width: 60px; height: 1px; background: #00c853; }
+.section-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1; margin-bottom: 3rem;
+}
+
+.featured-row {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 1px; background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1px;
+}
+@media(max-width: 700px) { .featured-row { grid-template-columns: 1fr; } }
+
+.featured-card {
+background: #1a1a1a; padding: 3rem; position: relative;
+overflow: hidden; min-height: 400px;
+display: flex; flex-direction: column; justify-content: flex-end;
+transition: background 0.3s;
+}
+.featured-card.dark { background: #111; }
+.featured-card:hover { background: #222; }
+.featured-card:hover .featured-icon-big { transform: scale(1.1) rotate(-5deg); }
+
+.featured-bg-text {
+position: absolute; top: -1rem; right: -1rem;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(6rem, 14vw, 12rem);
+color: rgba(255,255,255,0.03); line-height: 1;
+pointer-events: none; white-space: nowrap;
+}
+.featured-icon-big {
+font-size: 5rem; margin-bottom: 2rem; display: block;
+position: relative; z-index: 1; transition: transform 0.3s ease;
+}
+.featured-name {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; position: relative; z-index: 1;
+}
+.featured-sub {
+font-size: 0.9rem; color: rgba(245,245,240,0.5);
+margin-top: 0.5rem; margin-bottom: 1.5rem;
+position: relative; z-index: 1; font-weight: 300;
+}
+.featured-badge {
+position: absolute; top: 2rem; right: 2rem;
+background: #c62828; color: white; font-family: ‘Bebas Neue’, sans-serif;
+font-size: 0.9rem; padding: 0.3rem 0.8rem; border-radius: 2px;
+}
+
+.product-tag {
+display: inline-block; background: rgba(0,200,83,0.15); color: #00c853;
+font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.65rem; font-weight: 700;
+letter-spacing: 0.2em; text-transform: uppercase;
+padding: 0.3rem 0.7rem; border-radius: 2px; margin-bottom: 1.5rem; width: fit-content;
+}
+.product-tag.hot { background: rgba(198,40,40,0.2); color: #ef5350; }
+.product-tag.new { background: rgba(255,214,0,0.15); color: #ffd600; }
+
+.products-grid {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05);
+}
+.product-card {
+background: #1a1a1a; padding: 2rem; position: relative;
+overflow: hidden; cursor: pointer; transition: background 0.3s;
+display: flex; flex-direction: column; min-height: 320px;
+}
+.product-card::before {
+content: ‘’; position: absolute; bottom: 0; left: 0; right: 0;
+height: 3px; background: #00c853; transform: scaleX(0);
+transform-origin: left; transition: transform 0.3s ease;
+}
+.product-card:hover { background: #2a2a2a; }
+.product-card:hover::before { transform: scaleX(1); }
+.product-card:hover .product-icon { transform: scale(1.1) rotate(-5deg); }
+
+.product-icon { font-size: 3.5rem; margin-bottom: 1.5rem; transition: transform 0.3s ease; display: block; }
+.product-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 2rem; line-height: 1; margin-bottom: 0.75rem; }
+.product-desc { font-size: 0.9rem; font-weight: 300; color: rgba(245,245,240,0.5); line-height: 1.6; flex: 1; }
+.product-price-area { margin-top: 1.5rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.product-price { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.8rem; color: rgba(245,245,240,0.4); line-height: 1.4; }
+.product-price strong { display: block; font-size: 1.4rem; color: #00c853; font-weight: 700; }
+
+.btn-pedir {
+background: #00c853; color: #0a0a0a;
+font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700;
+font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 0.6rem 1.2rem; text-decoration: none; display: inline-block;
+transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
+}
+.btn-pedir:hover { background: #ffd600; transform: translateY(-2px); }
+
+footer {
+background: #050505; padding: 3rem 2rem;
+text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.5rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.footer-logo span { color: #00c853; }
+.footer-sub { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,245,240,0.3); margin-bottom: 1rem; }
+.footer-note { font-size: 0.75rem; color: rgba(245,245,240,0.2); font-weight: 300; }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+.whatsapp-float {
+position: fixed; bottom: 2rem; right: 2rem;
+background: #25d366; color: white;
+width: 60px; height: 60px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 2rem; box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+z-index: 999; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.7); }
+
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes scrollLine { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="flag-stripe"></div>
+  <div class="hero-badge">&#128293; Encomendas abertas &mdash; Paraguai</div>
+  <h1 class="hero-title">
+    <span class="outline">Voc&ecirc;</span>
+    <span>quer,</span>
+    <span style="color:#00c853;">eu</span>
+    <span>trago</span>
+  </h1>
+  <p class="hero-sub">Pe&ccedil;a agora &bull; Pague menos &bull; Receba em m&atilde;os</p>
+  <div class="hero-cta">
+    <a href="https://wa.me/5511969038584?text=Oi!%20Vi%20sua%20pagina%20e%20quero%20fazer%20um%20pedido%20do%20Paraguai!" target="_blank" class="btn-primary">Fazer pedido &#8594;</a>
+  </div>
+  <div class="scroll-hint">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+
+<div class="ticker">
+  <div class="ticker-inner">
+    FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES IMPORTADOS &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp; FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES IMPORTADOS &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp;
+  </div>
+</div>
+
+<!-- FEATURED -->
+
+<section id="produtos" style="padding:5rem 0;background:#0a0a0a;">
+  <div class="section" style="padding-bottom:2rem;">
+    <div class="section-label reveal">Faca seu pedido</div>
+    <h2 class="section-title reveal">Escolha<br>o seu</h2>
+  </div>
+  <div style="max-width:1400px;margin:0 2rem;border:1px solid rgba(255,255,255,0.05);">
+    <div class="featured-row">
+
+```
+  <!-- iPhone 17 -->
+  <div class="featured-card dark reveal">
+    <div class="featured-bg-text">iPHONE</div>
+    <div class="featured-badge">NOVO 2025</div>
+    <span class="featured-icon-big">&#128241;</span>
+    <span class="product-tag new" style="position:relative;z-index:1;">iPhone 17</span>
+    <div class="featured-name" style="position:relative;z-index:1;">iPhone 17<br><span style="color:#00c853;">Pro Max</span></div>
+    <p class="featured-sub">At&eacute; 40% mais barato que no Brasil. Original, lacrado, com garantia Apple Internacional.</p>
+    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20iPhone%2017%20do%20Paraguai!" target="_blank" class="btn-primary" style="width:fit-content;position:relative;z-index:1;">Quero encomendar</a>
+  </div>
+
+  <!-- PS5 -->
+  <div class="featured-card reveal reveal-delay-1">
+    <div class="featured-bg-text">PS5</div>
+    <span class="featured-icon-big">&#127918;</span>
+    <span class="product-tag hot" style="position:relative;z-index:1;">HOT ITEM</span>
+    <div class="featured-name" style="position:relative;z-index:1;">PlayStation<br><span style="color:#ffd600;">5 Slim</span></div>
+    <p class="featured-sub">Console + jogos por menos da metade do pre&ccedil;o brasileiro. Vers&atilde;o US com entrada f&iacute;sica.</p>
+    <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20PS5%20do%20Paraguai!" target="_blank" class="btn-primary" style="width:fit-content;position:relative;z-index:1;">Quero encomendar</a>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- PRODUCTS GRID -->
+
+<section style="padding:1px 2rem 5rem;background:#0a0a0a;">
+  <div style="max-width:1400px;margin:2rem auto 0;">
+    <div class="products-grid">
+
+```
+  <!-- Mounjaro -->
+  <div class="product-card reveal">
+    <span class="product-tag hot">Saude</span>
+    <span class="product-icon">&#128137;</span>
+    <div class="product-name">Mounjaro</div>
+    <p class="product-desc">Tirzepatida original, com prescri&ccedil;&atilde;o. Valores muito abaixo do mercado brasileiro.</p>
+    <div class="product-price-area">
+      <div class="product-price">a partir de<strong>$ 120 USD</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Mounjaro%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+    </div>
+  </div>
+
+  <!-- Perfumes -->
+  <div class="product-card reveal reveal-delay-1">
+    <span class="product-tag">Beleza</span>
+    <span class="product-icon">&#127800;</span>
+    <div class="product-name">Perfumes</div>
+    <p class="product-desc">Chanel, Dior, YSL, Tom Ford, Lanc&ocirc;me. Importados originais, at&eacute; 60% abaixo do Brasil.</p>
+    <div class="product-price-area">
+      <div class="product-price">a partir de<strong>$ 45 USD</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20perfumes%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+    </div>
+  </div>
+
+  <!-- Body Splash -->
+  <div class="product-card reveal reveal-delay-2">
+    <span class="product-tag">Beleza</span>
+    <span class="product-icon">&#128167;</span>
+    <div class="product-name">Body Splash</div>
+    <p class="product-desc">Victoria's Secret, Bath &amp; Body Works, Sol de Janeiro. Kits e unit&aacute;rios exclusivos.</p>
+    <div class="product-price-area">
+      <div class="product-price">a partir de<strong>$ 15 USD</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Body%20Splash%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+    </div>
+  </div>
+
+  <!-- Eletronicos -->
+  <div class="product-card reveal reveal-delay-3">
+    <span class="product-tag">Tech</span>
+    <span class="product-icon">&#9889;</span>
+    <div class="product-name">Eletronicos</div>
+    <p class="product-desc">Notebooks, tablets, AirPods, smartwatches, carregadores. Samsung, Sony, JBL e muito mais.</p>
+    <div class="product-price-area">
+      <div class="product-price">a partir de<strong>$ 30 USD</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20eletronicos%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+    </div>
+  </div>
+
+  <!-- Camisa Selecao -->
+  <div class="product-card reveal reveal-delay-4">
+    <span class="product-tag hot">Esporte</span>
+    <span class="product-icon">&#9917;</span>
+    <div class="product-name">Camisa da Selecao</div>
+    <p class="product-desc">Nike oficial e vers&otilde;es premium. Amarela, azul, goleiro. Todas as edi&ccedil;&otilde;es dispon&iacute;veis.</p>
+    <div class="product-price-area">
+      <div class="product-price">a partir de<strong>$ 25 USD</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20a%20camisa%20da%20Selecao%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+    </div>
+  </div>
+
+  <!-- Bebidas -->
+  <div class="product-card reveal reveal-delay-5">
+    <span class="product-tag new">Bonus</span>
+    <span class="product-icon">&#127867;</span>
+    <div class="product-name">Bebidas Importadas</div>
+    <p class="product-desc">Jack Daniel's, Johnnie Walker, vinhos chilenos e argentinos. Pre&ccedil;os livres de imposto.</p>
+    <div class="product-price-area">
+      <div class="product-price">a partir de<strong>$ 18 USD</strong></div>
+      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20bebidas%20importadas%20do%20Paraguai!" target="_blank" class="btn-pedir">Pedir</a>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div style="font-size:1.5rem;margin-bottom:1rem;">&#127463;&#127479; &#9992; &#127477;&#127486;</div>
+  <div class="footer-logo">PARA<span>GUAI</span> SHOP</div>
+  <div class="footer-sub">Encomendas direto do Paraguai &bull; Me chama no WhatsApp</div>
+  <p class="footer-note">Pre&ccedil;os em d&oacute;lar. Frete e prazo combinados no pedido.</p>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+
+<a href="https://wa.me/5511969038584?text=Oi!%20Vi%20sua%20pagina%20e%20quero%20fazer%20um%20pedido%20do%20Paraguai!" target="_blank" class="whatsapp-float">💬</a>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.product-card, .featured-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(800px) rotateY(${x*4}deg) rotateX(${-y*4}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+</script>
+
+</body>
+</html>
