@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -19,191 +18,65 @@
   --border: rgba(255,255,255,0.08);
 }
 html{scroll-behavior:smooth;}
-body{
-  background: var(--dark);
-  color:#fff;
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
-}
-
-/* ─── SCROLLBAR ─── */
+body{background:var(--dark);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;}
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:#0a0f1a;}
-::-webkit-scrollbar-thumb{background:var(–g);}
-
-/* ─── CURSOR GLOW ─── */
-.cursor-glow{
-position:fixed;width:400px;height:400px;
-background:radial-gradient(circle,rgba(0,212,106,0.06) 0%,transparent 70%);
-border-radius:50%;pointer-events:none;z-index:0;
-transform:translate(-50%,-50%);transition:all .15s ease;
-}
-
-/* ─── NOISE OVERLAY ─── */
-body::before{
-content:’’;position:fixed;inset:0;
-background-image:url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.03’/%3E%3C/svg%3E”);
-opacity:.4;pointer-events:none;z-index:1;
-}
+::-webkit-scrollbar-thumb{background:var(--g);}
+.cursor-glow{position:fixed;width:400px;height:400px;background:radial-gradient(circle,rgba(0,212,106,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:all .15s ease;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:1;}
 
 /* ─── HERO ─── */
-.hero{
-position:relative;min-height:100vh;
-display:flex;flex-direction:column;justify-content:center;align-items:center;
-text-align:center;padding:2rem;overflow:hidden;z-index:2;
-}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;overflow:hidden;z-index:2;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 50% at 20% 60%, rgba(214,0,38,0.12) 0%, transparent 60%),radial-gradient(ellipse 80% 50% at 80% 40%, rgba(0,48,135,0.14) 0%, transparent 60%),radial-gradient(ellipse 60% 60% at 50% 80%, rgba(0,212,106,0.1) 0%, transparent 60%),linear-gradient(180deg, #04080f 0%, #080c18 60%, #060a12 100%);}
+.hero-city{position:absolute;bottom:0;left:0;right:0;height:220px;z-index:1;}
 
-/* Fundo da Tríplice Fronteira — gradiente temático */
-.hero-bg{
-position:absolute;inset:0;z-index:0;
-background:
-radial-gradient(ellipse 80% 50% at 20% 60%, rgba(214,0,38,0.12) 0%, transparent 60%),
-radial-gradient(ellipse 80% 50% at 80% 40%, rgba(0,48,135,0.14) 0%, transparent 60%),
-radial-gradient(ellipse 60% 60% at 50% 80%, rgba(0,212,106,0.1) 0%, transparent 60%),
-linear-gradient(180deg, #04080f 0%, #080c18 60%, #060a12 100%);
-}
+/* FIX: padding-bottom cria espaço entre os botões e o hero-countries absoluto */
+.hero-content{position:relative;z-index:3;padding-bottom:7rem;}
 
-/* Cityline SVG silhouette */
-.hero-city{
-position:absolute;bottom:0;left:0;right:0;height:220px;z-index:1;
-background:
-linear-gradient(180deg, transparent 0%, rgba(0,212,106,0.03) 100%);
-}
-
-.hero-content{position:relative;z-index:3;}
-
-.hero-eyebrow{
-display:inline-flex;align-items:center;gap:8px;
-background:rgba(0,212,106,0.1);border:1px solid rgba(0,212,106,0.25);
-color:var(–g);font-size:.7rem;font-weight:600;letter-spacing:.2em;
-text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;
-margin-bottom:2rem;
-animation:fadeSlideUp .8s ease both;
-}
-.hero-eyebrow .dot{width:6px;height:6px;background:var(–g);border-radius:50%;animation:pulse 2s infinite;}
-
-.hero-title{
-font-family:‘Bebas Neue’,sans-serif;
-font-size:clamp(4.5rem,15vw,13rem);
-line-height:.85;letter-spacing:-.01em;
-animation:fadeSlideUp .8s .1s ease both;
-}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,106,0.1);border:1px solid rgba(0,212,106,0.25);color:var(--g);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;animation:fadeSlideUp .8s ease both;}
+.hero-eyebrow .dot{width:6px;height:6px;background:var(--g);border-radius:50%;animation:pulse 2s infinite;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,15vw,13rem);line-height:.85;letter-spacing:-.01em;animation:fadeSlideUp .8s .1s ease both;}
 .hero-title .line1{display:block;color:rgba(255,255,255,.15);-webkit-text-stroke:1px rgba(255,255,255,.25);}
 .hero-title .line2{display:block;}
-.hero-title .line3{display:block;color:var(–g);}
+.hero-title .line3{display:block;color:var(--g);}
 .hero-title .line4{display:block;}
-
-.hero-sub{
-font-size:clamp(.9rem,2vw,1.1rem);font-weight:300;color:rgba(255,255,255,.4);
-letter-spacing:.12em;text-transform:uppercase;margin-top:1.5rem;
-animation:fadeSlideUp .8s .2s ease both;
-}
-
-.hero-cta{
-margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;
-animation:fadeSlideUp .8s .3s ease both;
-}
-.btn-green{
-background:var(–g);color:#000;font-weight:700;font-size:.9rem;
-letter-spacing:.08em;text-transform:uppercase;padding:.9rem 2.2rem;
-border:none;border-radius:4px;text-decoration:none;display:inline-block;
-transition:all .25s;position:relative;overflow:hidden;
-}
-.btn-green::after{
-content:’’;position:absolute;inset:0;
-background:linear-gradient(135deg,rgba(255,255,255,.2),transparent);
-opacity:0;transition:opacity .25s;
-}
+.hero-sub{font-size:clamp(.9rem,2vw,1.1rem);font-weight:300;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;margin-top:1.5rem;animation:fadeSlideUp .8s .2s ease both;}
+.hero-cta{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeSlideUp .8s .3s ease both;}
+.btn-green{background:var(--g);color:#000;font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;padding:.9rem 2.2rem;border:none;border-radius:4px;text-decoration:none;display:inline-block;transition:all .25s;position:relative;overflow:hidden;}
+.btn-green::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.2),transparent);opacity:0;transition:opacity .25s;}
 .btn-green:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,212,106,.3);}
 .btn-green:hover::after{opacity:1;}
-
-.btn-ghost{
-background:transparent;color:#fff;font-weight:500;font-size:.9rem;
-letter-spacing:.08em;text-transform:uppercase;padding:.9rem 2.2rem;
-border:1px solid rgba(255,255,255,.15);border-radius:4px;
-text-decoration:none;display:inline-block;transition:all .25s;
-}
-.btn-ghost:hover{border-color:var(–g);color:var(–g);}
-
-/* Países badge */
-.hero-countries{
-position:absolute;bottom:2.5rem;left:0;right:0;
-display:flex;justify-content:center;gap:2rem;z-index:3;
-animation:fadeSlideUp .8s .5s ease both;
-}
-.country-badge{
-display:flex;align-items:center;gap:.5rem;
-font-size:.7rem;font-weight:500;letter-spacing:.1em;
-text-transform:uppercase;color:rgba(255,255,255,.35);
-}
+.btn-ghost{background:transparent;color:#fff;font-weight:500;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;padding:.9rem 2.2rem;border:1px solid rgba(255,255,255,.15);border-radius:4px;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-ghost:hover{border-color:var(--g);color:var(--g);}
+.hero-countries{position:absolute;bottom:2.5rem;left:0;right:0;display:flex;justify-content:center;gap:2rem;z-index:3;animation:fadeSlideUp .8s .5s ease both;}
+.country-badge{display:flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);}
 .country-badge .flag-dot{width:8px;height:8px;border-radius:50%;}
 .flag-dot.py{background:#d60026;}
 .flag-dot.br{background:#009c3b;}
 .flag-dot.ar{background:#74acdf;}
 
 /* ─── TICKER ─── */
-.ticker{
-background:var(–g);color:#000;
-padding:.6rem 0;overflow:hidden;white-space:nowrap;
-position:relative;z-index:10;
-}
-.ticker-track{
-display:inline-block;
-animation:ticker 30s linear infinite;
-font-weight:700;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
-}
+.ticker{background:var(--g);color:#000;padding:.6rem 0;overflow:hidden;white-space:nowrap;position:relative;z-index:10;}
+.ticker-track{display:inline-block;animation:ticker 30s linear infinite;font-weight:700;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;}
 
-/* ─── SECTIONS GENÉRICAS ─── */
-.section{
-padding:6rem 2rem;max-width:1300px;margin:0 auto;
-position:relative;z-index:2;
-}
-.section-tag{
-display:inline-block;font-size:.65rem;font-weight:700;
-letter-spacing:.25em;text-transform:uppercase;color:var(–g);
-margin-bottom:.75rem;
-}
-.section-title{
-font-family:‘Bebas Neue’,sans-serif;
-font-size:clamp(2.5rem,6vw,5rem);line-height:1;
-margin-bottom:.5rem;
-}
-.section-sub{
-font-size:.95rem;font-weight:300;color:rgba(255,255,255,.4);
-max-width:500px;line-height:1.7;margin-bottom:3rem;
-}
+/* ─── SECTIONS ─── */
+.section{padding:6rem 2rem;max-width:1300px;margin:0 auto;position:relative;z-index:2;}
+.section-tag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--g);margin-bottom:.75rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);line-height:1;margin-bottom:.5rem;}
+.section-sub{font-size:.95rem;font-weight:300;color:rgba(255,255,255,.4);max-width:500px;line-height:1.7;margin-bottom:3rem;}
 
-/* ─── SOBRE A VIAGEM ─── */
-.about-section{background:rgba(0,0,0,.3);border-top:1px solid var(–border);border-bottom:1px solid var(–border);}
+/* ─── SOBRE ─── */
+.about-section{background:rgba(0,0,0,.3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:2rem;}}
-.about-visual{position:relative;}
-.about-map{
-width:100%;aspect-ratio:1;
-background:rgba(0,212,106,.04);
-border:1px solid rgba(0,212,106,.12);
-border-radius:12px;display:flex;align-items:center;justify-content:center;
-font-size:5rem;position:relative;overflow:hidden;
-}
-.about-map::before{
-content:’’;position:absolute;inset:0;
-background:radial-gradient(circle at 50% 50%, rgba(0,212,106,.08) 0%, transparent 70%);
-}
+.about-map{width:100%;aspect-ratio:1;background:rgba(0,212,106,.04);border:1px solid rgba(0,212,106,.12);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
+.about-map::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(0,212,106,.08) 0%, transparent 70%);}
 .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
-.stat-box{
-background:var(–card);border:1px solid var(–border);border-radius:8px;
-padding:1.2rem;text-align:center;
-}
-.stat-num{font-family:‘Bebas Neue’,sans-serif;font-size:2.2rem;color:var(–g);line-height:1;}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.2rem;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--g);line-height:1;}
 .stat-label{font-size:.7rem;font-weight:500;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:.25rem;}
-
 .countries-list{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
-.country-item{
-display:flex;align-items:center;gap:1.2rem;
-padding:1rem 1.2rem;background:var(–card);
-border:1px solid var(–border);border-radius:8px;
-transition:border-color .25s,transform .25s;
-}
+.country-item{display:flex;align-items:center;gap:1.2rem;padding:1rem 1.2rem;background:var(--card);border:1px solid var(--border);border-radius:8px;transition:border-color .25s,transform .25s;}
 .country-item:hover{border-color:rgba(255,255,255,.2);transform:translateX(4px);}
 .country-flag{font-size:2rem;flex-shrink:0;}
 .country-info{flex:1;}
@@ -211,200 +84,85 @@ transition:border-color .25s,transform .25s;
 .country-city{font-size:.78rem;color:rgba(255,255,255,.35);font-weight:300;}
 .country-accent{width:3px;height:40px;border-radius:2px;flex-shrink:0;}
 
-/* ─── PRODUCTS SHOWCASE ─── */
+/* ─── PRODUTOS ─── */
 .products-section{position:relative;overflow:hidden;}
-.products-section::before{
-content:’’;position:absolute;top:-100px;left:-100px;
-width:500px;height:500px;border-radius:50%;
-background:radial-gradient(circle, rgba(0,212,106,.06) 0%, transparent 70%);
-pointer-events:none;
-}
-
-/* Featured 2x2 */
-.feat-grid{
-display:grid;grid-template-columns:1fr 1fr;
-gap:1px;background:var(–border);
-border:1px solid var(–border);border-radius:12px;overflow:hidden;
-margin-bottom:1px;
-}
+.products-section::before{content:'';position:absolute;top:-100px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle, rgba(0,212,106,.06) 0%, transparent 70%);pointer-events:none;}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1px;}
 @media(max-width:640px){.feat-grid{grid-template-columns:1fr;}}
-
-.feat-card{
-background:#0b1120;padding:2.2rem;
-display:flex;flex-direction:column;gap:.5rem;
-position:relative;overflow:hidden;cursor:pointer;
-transition:background .3s;
-}
+.feat-card{background:#0b1120;padding:2.2rem;display:flex;flex-direction:column;gap:.5rem;position:relative;overflow:hidden;cursor:pointer;transition:background .3s;}
 .feat-card:hover{background:#0f1828;}
-.feat-card::before{
-content:’’;position:absolute;inset:0;
-background:linear-gradient(135deg,rgba(0,212,106,.04) 0%,transparent 50%);
-opacity:0;transition:opacity .3s;
-}
+.feat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,212,106,.04) 0%,transparent 50%);opacity:0;transition:opacity .3s;}
 .feat-card:hover::before{opacity:1;}
-.feat-card-bg-text{
-position:absolute;right:-10px;top:-10px;
-font-family:‘Bebas Neue’,sans-serif;
-font-size:clamp(5rem,10vw,9rem);
-color:rgba(255,255,255,.025);line-height:1;
-pointer-events:none;white-space:nowrap;
-transition:transform .4s ease;
-}
+.feat-card-bg-text{position:absolute;right:-10px;top:-10px;font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,10vw,9rem);color:rgba(255,255,255,.025);line-height:1;pointer-events:none;white-space:nowrap;transition:transform .4s ease;}
 .feat-card:hover .feat-card-bg-text{transform:scale(1.05);}
-
-.feat-badge{
-position:absolute;top:1.2rem;right:1.2rem;
-background:#be1414;color:#fff;
-font-size:.6rem;font-weight:700;letter-spacing:.12em;
-text-transform:uppercase;padding:.28rem .7rem;border-radius:100px;
-}
+.feat-badge{position:absolute;top:1.2rem;right:1.2rem;background:#be1414;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .7rem;border-radius:100px;}
 .feat-badge.gold{background:rgba(255,214,0,.15);color:#ffd600;border:1px solid rgba(255,214,0,.3);}
 .feat-badge.blue{background:rgba(26,111,255,.15);color:#5b9fff;border:1px solid rgba(26,111,255,.3);}
-
 .feat-icon{font-size:2.6rem;margin-bottom:.3rem;display:block;transition:transform .3s;}
 .feat-card:hover .feat-icon{transform:scale(1.1) rotate(-5deg);}
-
-.ptag{
-display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.2em;
-text-transform:uppercase;padding:.25rem .65rem;border-radius:100px;width:fit-content;
-}
-.ptag.green{background:rgba(0,212,106,.12);color:var(–g);border:1px solid rgba(0,212,106,.2);}
+.ptag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .65rem;border-radius:100px;width:fit-content;}
+.ptag.green{background:rgba(0,212,106,.12);color:var(--g);border:1px solid rgba(0,212,106,.2);}
 .ptag.red{background:rgba(255,45,45,.12);color:#ff6b6b;border:1px solid rgba(255,45,45,.2);}
 .ptag.yellow{background:rgba(255,214,0,.12);color:#ffd600;border:1px solid rgba(255,214,0,.2);}
 .ptag.blue{background:rgba(26,111,255,.12);color:#5b9fff;border:1px solid rgba(26,111,255,.2);}
-
-.feat-name{
-font-family:‘Bebas Neue’,sans-serif;
-font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.05;
-}
+.feat-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.05;}
 .feat-desc{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.4);line-height:1.6;flex:1;}
-.feat-bottom{
-display:flex;align-items:center;justify-content:space-between;
-gap:1rem;margin-top:1rem;flex-wrap:wrap;
-}
+.feat-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1rem;flex-wrap:wrap;}
 .feat-price{font-size:.72rem;color:rgba(255,255,255,.3);}
-.feat-price strong{display:block;font-size:1.3rem;color:var(–g);font-weight:700;font-family:‘Bebas Neue’,sans-serif;letter-spacing:.05em;}
-
-/* Small cards grid */
-.small-grid{
-display:grid;grid-template-columns:repeat(4,1fr);
-gap:1px;background:var(–border);
-border:1px solid var(–border);border-radius:12px;overflow:hidden;
-margin-top:1px;
-}
+.feat-price strong{display:block;font-size:1.3rem;color:var(--g);font-weight:700;font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;}
+.small-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:1px;}
 @media(max-width:900px){.small-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:480px){.small-grid{grid-template-columns:1fr;}}
-
-.small-card{
-background:#0b1120;padding:1.6rem;
-display:flex;flex-direction:column;gap:.4rem;
-position:relative;overflow:hidden;cursor:pointer;
-transition:background .3s;
-}
+.small-card{background:#0b1120;padding:1.6rem;display:flex;flex-direction:column;gap:.4rem;position:relative;overflow:hidden;cursor:pointer;transition:background .3s;}
 .small-card:hover{background:#0f1828;}
-.small-card::after{
-content:’’;position:absolute;bottom:0;left:0;right:0;
-height:2px;background:var(–g);
-transform:scaleX(0);transform-origin:left;transition:transform .3s;
-}
+.small-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
 .small-card:hover::after{transform:scaleX(1);}
 .small-icon{font-size:2.2rem;margin-bottom:.5rem;display:block;transition:transform .3s;}
 .small-card:hover .small-icon{transform:scale(1.1) rotate(-5deg);}
-.small-name{font-family:‘Bebas Neue’,sans-serif;font-size:1.5rem;line-height:1;}
+.small-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;line-height:1;}
 .small-desc{font-size:.76rem;color:rgba(255,255,255,.35);line-height:1.55;flex:1;}
 .small-price-row{display:flex;align-items:center;justify-content:space-between;margin-top:.8rem;}
 .small-price{font-size:.7rem;color:rgba(255,255,255,.3);}
-.small-price strong{display:block;font-size:1.1rem;color:var(–g);font-weight:700;}
-
-/* ─── CTA BUTTONS ─── */
-.btn-enc{
-background:var(–g);color:#000;font-weight:700;font-size:.75rem;
-letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.2rem;
-text-decoration:none;display:inline-block;transition:all .2s;
-border-radius:4px;white-space:nowrap;flex-shrink:0;
-}
+.small-price strong{display:block;font-size:1.1rem;color:var(--g);font-weight:700;}
+.btn-enc{background:var(--g);color:#000;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.2rem;text-decoration:none;display:inline-block;transition:all .2s;border-radius:4px;white-space:nowrap;flex-shrink:0;}
 .btn-enc:hover{background:#ffd600;transform:translateY(-2px);}
-.btn-sm{
-background:var(–g);color:#000;font-weight:700;font-size:.68rem;
-letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;
-text-decoration:none;display:inline-block;transition:all .2s;
-border-radius:4px;white-space:nowrap;
-}
+.btn-sm{background:var(--g);color:#000;font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;text-decoration:none;display:inline-block;transition:all .2s;border-radius:4px;white-space:nowrap;}
 .btn-sm:hover{background:#ffd600;}
-
-/* ─── SEPARATOR ─── */
 .sep{height:3rem;}
 
-/* ─── SOCIAL PROOF / TRUST ─── */
-.trust-section{
-background:linear-gradient(135deg, rgba(0,212,106,.04) 0%, transparent 50%);
-border-top:1px solid var(–border);border-bottom:1px solid var(–border);
-padding:5rem 2rem;
-}
+/* ─── TRUST ─── */
+.trust-section{background:linear-gradient(135deg, rgba(0,212,106,.04) 0%, transparent 50%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2rem;}
 .trust-inner{max-width:1300px;margin:0 auto;}
 .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
 @media(max-width:700px){.trust-grid{grid-template-columns:1fr;}}
-.trust-card{
-background:var(–card);border:1px solid var(–border);border-radius:10px;
-padding:1.8rem;text-align:center;transition:border-color .25s, transform .25s;
-}
+.trust-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.8rem;text-align:center;transition:border-color .25s, transform .25s;}
 .trust-card:hover{border-color:rgba(0,212,106,.25);transform:translateY(-4px);}
 .trust-icon{font-size:2.2rem;margin-bottom:1rem;display:block;}
 .trust-title{font-weight:600;font-size:1rem;margin-bottom:.5rem;}
 .trust-text{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.65;font-weight:300;}
 
-/* ─── BIG CTA ─── */
-.cta-section{
-padding:8rem 2rem;text-align:center;position:relative;overflow:hidden;
-}
-.cta-section::before{
-content:’’;position:absolute;inset:0;
-background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,212,106,.07) 0%, transparent 70%);
-pointer-events:none;
-}
+/* ─── CTA ─── */
+.cta-section{padding:8rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,212,106,.07) 0%, transparent 70%);pointer-events:none;}
 .cta-section .section-title{font-size:clamp(3rem,8vw,7rem);}
 .cta-big-sub{font-size:1.05rem;color:rgba(255,255,255,.35);font-weight:300;margin:1rem 0 2.5rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7;}
-.cta-phone{
-display:inline-flex;align-items:center;gap:.75rem;
-font-size:1.5rem;font-weight:700;color:var(–g);
-text-decoration:none;margin-top:1.5rem;
-transition:opacity .25s;
-}
+.cta-phone{display:inline-flex;align-items:center;gap:.75rem;font-size:1.5rem;font-weight:700;color:var(--g);text-decoration:none;margin-top:1.5rem;transition:opacity .25s;}
 .cta-phone:hover{opacity:.7;}
 .cta-phone span{font-size:.8rem;font-weight:400;color:rgba(255,255,255,.3);display:block;letter-spacing:.1em;text-transform:uppercase;}
 
 /* ─── FOOTER ─── */
-footer{
-background:#040608;border-top:1px solid var(–border);
-padding:3rem 2rem;text-align:center;position:relative;z-index:2;
-}
-.footer-logo{
-font-family:‘Bebas Neue’,sans-serif;font-size:2.2rem;
-letter-spacing:.08em;margin-bottom:.4rem;
-}
-.footer-logo span{color:var(–g);}
+footer{background:#040608;border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;position:relative;z-index:2;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;margin-bottom:.4rem;}
+.footer-logo span{color:var(--g);}
 .footer-flags{font-size:1.3rem;margin-bottom:.75rem;display:block;}
 .footer-sub{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);}
 
 /* ─── WHATSAPP ─── */
-.wa-float{
-position:fixed;bottom:1.8rem;right:1.8rem;
-background:#25d366;color:#fff;
-width:56px;height:56px;border-radius:50%;
-display:flex;align-items:center;justify-content:center;
-font-size:1.6rem;box-shadow:0 8px 30px rgba(37,211,102,.4);
-z-index:1000;text-decoration:none;
-transition:transform .25s, box-shadow .25s;
-}
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;background:#25d366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 8px 30px rgba(37,211,102,.4);z-index:1000;text-decoration:none;transition:transform .25s, box-shadow .25s;}
 .wa-float:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,211,102,.6);}
-.wa-float::before{
-content:’’;position:absolute;
-width:56px;height:56px;border-radius:50%;
-background:rgba(37,211,102,.3);
-animation:waPulse 2s infinite;
-}
+.wa-float::before{content:'';position:absolute;width:56px;height:56px;border-radius:50%;background:rgba(37,211,102,.3);animation:waPulse 2s infinite;}
 
-/* ─── REVEAL ANIMATIONS ─── */
+/* ─── REVEAL ─── */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);}
 .reveal.from-left{transform:translateX(-40px);}
 .reveal.from-right{transform:translateX(40px);}
@@ -413,73 +171,43 @@ animation:waPulse 2s infinite;
 .d1{transition-delay:.05s;}.d2{transition-delay:.1s;}.d3{transition-delay:.15s;}
 .d4{transition-delay:.2s;}.d5{transition-delay:.25s;}.d6{transition-delay:.3s;}
 
-/* ─── KEYFRAMES ─── */
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:none;}}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 @keyframes waPulse{0%{transform:scale(1);opacity:.6;}100%{transform:scale(1.8);opacity:0;}}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
 </style>
-
 </head>
 <body>
 
 <div class="cursor-glow" id="glow"></div>
 
-<!-- ══════════════════════════════════
-     HERO
-══════════════════════════════════ -->
-
 <section class="hero">
   <div class="hero-bg"></div>
-
-  <!-- Silhueta de cidade no fundo -->
-
   <svg class="hero-city" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- PY lado esquerdo -->
     <rect x="0" y="120" width="18" height="100" fill="rgba(0,212,106,.06)"/>
     <rect x="4" y="90" width="10" height="130" fill="rgba(0,212,106,.08)"/>
     <rect x="22" y="130" width="16" height="90" fill="rgba(0,212,106,.05)"/>
     <rect x="42" y="100" width="22" height="120" fill="rgba(0,212,106,.07)"/>
     <rect x="44" y="80" width="8" height="140" fill="rgba(0,212,106,.09)"/>
     <rect x="68" y="115" width="18" height="105" fill="rgba(0,212,106,.06)"/>
-    <rect x="70" y="95" width="10" height="125" fill="rgba(0,212,106,.08)"/>
     <rect x="92" y="125" width="16" height="95" fill="rgba(0,212,106,.05)"/>
     <rect x="112" y="108" width="20" height="112" fill="rgba(0,212,106,.07)"/>
     <rect x="136" y="118" width="15" height="102" fill="rgba(0,212,106,.06)"/>
-    <rect x="155" y="98" width="10" height="122" fill="rgba(0,212,106,.08)"/>
-    <rect x="170" y="130" width="18" height="90" fill="rgba(0,212,106,.05)"/>
-    <!-- BR centro -->
     <rect x="580" y="80" width="20" height="140" fill="rgba(0,156,59,.07)"/>
     <rect x="582" y="55" width="12" height="165" fill="rgba(0,156,59,.09)"/>
-    <rect x="606" y="95" width="18" height="125" fill="rgba(0,156,59,.06)"/>
     <rect x="628" y="72" width="24" height="148" fill="rgba(0,156,59,.08)"/>
     <rect x="630" y="50" width="9" height="170" fill="rgba(0,156,59,.1)"/>
-    <rect x="658" y="88" width="20" height="132" fill="rgba(0,156,59,.07)"/>
-    <rect x="660" y="65" width="11" height="155" fill="rgba(0,156,59,.09)"/>
-    <rect x="684" y="98" width="17" height="122" fill="rgba(0,156,59,.06)"/>
     <rect x="705" y="78" width="22" height="142" fill="rgba(0,156,59,.08)"/>
-    <rect x="732" y="90" width="18" height="130" fill="rgba(0,156,59,.07)"/>
     <rect x="755" y="70" width="14" height="150" fill="rgba(0,156,59,.08)"/>
-    <rect x="774" y="100" width="20" height="120" fill="rgba(0,156,59,.06)"/>
-    <rect x="798" y="82" width="16" height="138" fill="rgba(0,156,59,.07)"/>
     <rect x="820" y="95" width="22" height="125" fill="rgba(0,156,59,.06)"/>
-    <rect x="846" y="78" width="12" height="142" fill="rgba(0,156,59,.08)"/>
-    <!-- AR lado direito -->
-    <rect x="1260" y="110" width="18" height="110" fill="rgba(116,172,223,.06)"/>
     <rect x="1282" y="88" width="22" height="132" fill="rgba(116,172,223,.07)"/>
-    <rect x="1284" y="68" width="9" height="152" fill="rgba(116,172,223,.09)"/>
     <rect x="1310" y="100" width="16" height="120" fill="rgba(116,172,223,.06)"/>
     <rect x="1330" y="82" width="20" height="138" fill="rgba(116,172,223,.07)"/>
-    <rect x="1332" y="60" width="8" height="160" fill="rgba(116,172,223,.09)"/>
-    <rect x="1356" y="95" width="17" height="125" fill="rgba(116,172,223,.06)"/>
     <rect x="1378" y="108" width="20" height="112" fill="rgba(116,172,223,.07)"/>
-    <rect x="1410" y="90" width="16" height="130" fill="rgba(116,172,223,.06)"/>
-    <!-- Rio Paraná e Iguaçu — faixas verticais claras -->
     <rect x="192" y="0" width="40" height="220" fill="rgba(20,80,140,.12)"/>
     <rect x="560" y="0" width="24" height="220" fill="rgba(20,80,140,.1)"/>
     <rect x="1240" y="0" width="24" height="220" fill="rgba(20,80,140,.1)"/>
-    <!-- Fade inferior -->
     <rect x="0" y="120" width="1440" height="100" fill="url(#fadeDown)"/>
     <defs>
       <linearGradient id="fadeDown" x1="0" y1="0" x2="0" y2="1">
@@ -515,19 +243,11 @@ animation:waPulse 2s infinite;
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     TICKER
-══════════════════════════════════ -->
-
 <div class="ticker">
   <div class="ticker-track">
     FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES ARABES &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp; FACA SEU PEDIDO AGORA &nbsp;&bull;&nbsp; IPHONE 17 COM GARANTIA &nbsp;&bull;&nbsp; PS5 ORIGINAL &nbsp;&bull;&nbsp; MOUNJARO DISPONIVEL &nbsp;&bull;&nbsp; PERFUMES ARABES &nbsp;&bull;&nbsp; ELETRONICOS &nbsp;&bull;&nbsp; CAMISA DA SELECAO &nbsp;&bull;&nbsp; ENTREGO EM MAOS &nbsp;&bull;&nbsp;
   </div>
 </div>
-
-<!-- ══════════════════════════════════
-     SOBRE A VIAGEM
-══════════════════════════════════ -->
 
 <section class="about-section">
   <div class="section">
@@ -535,7 +255,7 @@ animation:waPulse 2s infinite;
       <div>
         <p class="section-tag reveal">Tr&iacute;plice Fronteira</p>
         <h2 class="section-title reveal d1">Onde tudo<br><span style="color:var(--g)">acontece</span></h2>
-        <p class="section-sub reveal d2">Eu vou at&eacute; Ciudad del Este, no corac&atilde;o da Tr&iacute;plice Fronteira, e trago de volta o que voc&ecirc; precisar &mdash; original, lacrado e com pre&ccedil;o justo.</p>
+        <p class="section-sub reveal d2">Eu vou at&eacute; Ciudad del Este, no cora&ccedil;&atilde;o da Tr&iacute;plice Fronteira, e trago de volta o que voc&ecirc; precisar &mdash; original, lacrado e com pre&ccedil;o justo.</p>
         <div class="countries-list">
           <div class="country-item reveal d2">
             <span class="country-flag">&#127477;&#127486;</span>
@@ -568,31 +288,15 @@ animation:waPulse 2s infinite;
           <span style="font-size:6rem;position:relative;z-index:1;animation:float 3s ease-in-out infinite;">&#127758;</span>
         </div>
         <div class="about-stats">
-          <div class="stat-box reveal d2">
-            <div class="stat-num">40%</div>
-            <div class="stat-label">Mais barato que no BR</div>
-          </div>
-          <div class="stat-box reveal d3">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Produtos originais</div>
-          </div>
-          <div class="stat-box reveal d4">
-            <div class="stat-num">0</div>
-            <div class="stat-label">Taxas escondidas</div>
-          </div>
-          <div class="stat-box reveal d5">
-            <div class="stat-num">Em m&atilde;os</div>
-            <div class="stat-label">Entrega pessoal</div>
-          </div>
+          <div class="stat-box reveal d2"><div class="stat-num">40%</div><div class="stat-label">Mais barato que no BR</div></div>
+          <div class="stat-box reveal d3"><div class="stat-num">100%</div><div class="stat-label">Produtos originais</div></div>
+          <div class="stat-box reveal d4"><div class="stat-num">0</div><div class="stat-label">Taxas escondidas</div></div>
+          <div class="stat-box reveal d5"><div class="stat-num">Em m&atilde;os</div><div class="stat-label">Entrega pessoal</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ══════════════════════════════════
-     PRODUTOS
-══════════════════════════════════ -->
 
 <section class="products-section" id="produtos">
   <div class="section">
@@ -600,126 +304,103 @@ animation:waPulse 2s infinite;
     <h2 class="section-title reveal d1">Escolha<br><span style="color:var(--g)">o seu</span></h2>
     <p class="section-sub reveal d2">Tudo que voc&ecirc; precisa, eu trago direto de Ciudad del Este.</p>
 
-```
-<!-- FEATURED 2x2 -->
-<div class="feat-grid reveal scale-in d2">
-
-  <!-- iPhone 17 -->
-  <div class="feat-card">
-    <div class="feat-card-bg-text">iPHONE</div>
-    <div class="feat-badge">NOVO 2025</div>
-    <span class="feat-icon">&#128241;</span>
-    <span class="ptag green">iPhone 17</span>
-    <div class="feat-name">iPhone 17<br><span style="color:var(--g)">Pro Max</span></div>
-    <p class="feat-desc">At&eacute; 40% mais barato que no Brasil. Original, lacrado, com garantia Apple Internacional.</p>
-    <div class="feat-bottom">
-      <div class="feat-price">pre&ccedil;o<strong>Consulte</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20iPhone%2017%20Pro%20Max!" target="_blank" class="btn-enc">Encomendar</a>
+    <div class="feat-grid reveal scale-in d2">
+      <div class="feat-card">
+        <div class="feat-card-bg-text">iPHONE</div>
+        <div class="feat-badge">NOVO 2025</div>
+        <span class="feat-icon">&#128241;</span>
+        <span class="ptag green">iPhone 17</span>
+        <div class="feat-name">iPhone 17<br><span style="color:var(--g)">Pro Max</span></div>
+        <p class="feat-desc">At&eacute; 40% mais barato que no Brasil. Original, lacrado, com garantia Apple Internacional.</p>
+        <div class="feat-bottom">
+          <div class="feat-price">pre&ccedil;o<strong>Consulte</strong></div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20iPhone%2017%20Pro%20Max!" target="_blank" class="btn-enc">Encomendar</a>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-bg-text">PS5</div>
+        <div class="feat-badge gold">HOT ITEM</div>
+        <span class="feat-icon">&#127918;</span>
+        <span class="ptag yellow">PlayStation 5</span>
+        <div class="feat-name">PlayStation<br><span style="color:#ffd600">5 Slim</span></div>
+        <p class="feat-desc">Console + jogos por menos da metade do pre&ccedil;o brasileiro. Vers&atilde;o US com entrada f&iacute;sica.</p>
+        <div class="feat-bottom">
+          <div class="feat-price">pre&ccedil;o<strong>Consulte</strong></div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20PS5!" target="_blank" class="btn-enc">Encomendar</a>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-bg-text">MOUNJARO</div>
+        <div class="feat-badge" style="background:rgba(255,45,45,.15);color:#ff6b6b;border:1px solid rgba(255,45,45,.25);">MAIS PEDIDO</div>
+        <span class="feat-icon">&#128137;</span>
+        <span class="ptag red">Sa&uacute;de</span>
+        <div class="feat-name">Mounjaro<br><span style="color:#ff6b6b">Tirzepatida</span></div>
+        <p class="feat-desc">Original com prescri&ccedil;&atilde;o. Valores muito abaixo do mercado brasileiro.</p>
+        <div class="feat-bottom">
+          <div class="feat-price">a partir de<strong>R$ 1.200</strong></div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Mounjaro!" target="_blank" class="btn-enc">Encomendar</a>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-bg-text">PERFUME</div>
+        <div class="feat-badge blue">EXCLUSIVO</div>
+        <span class="feat-icon">&#129749;</span>
+        <span class="ptag blue">Perfumaria</span>
+        <div class="feat-name">Perfumes<br><span style="color:#5b9fff">&#193;rabes</span></div>
+        <p class="feat-desc">Lattafa, Swiss Arabian, Ajmal, Al Haramain. Fr&acirc;ncias intensas e duradouras.</p>
+        <div class="feat-bottom">
+          <div class="feat-price">a partir de<strong>R$ 280</strong></div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20perfumes%20arabes!" target="_blank" class="btn-enc">Encomendar</a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- PS5 -->
-  <div class="feat-card">
-    <div class="feat-card-bg-text">PS5</div>
-    <div class="feat-badge gold">HOT ITEM</div>
-    <span class="feat-icon">&#127918;</span>
-    <span class="ptag yellow">PlayStation 5</span>
-    <div class="feat-name">PlayStation<br><span style="color:#ffd600">5 Slim</span></div>
-    <p class="feat-desc">Console + jogos por menos da metade do pre&ccedil;o brasileiro. Vers&atilde;o US com entrada f&iacute;sica.</p>
-    <div class="feat-bottom">
-      <div class="feat-price">pre&ccedil;o<strong>Consulte</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20um%20PS5!" target="_blank" class="btn-enc">Encomendar</a>
+    <div class="sep"></div>
+
+    <div class="small-grid reveal scale-in d3">
+      <div class="small-card">
+        <span class="small-icon">&#128167;</span>
+        <span class="ptag green" style="margin-bottom:.5rem;">Beleza</span>
+        <div class="small-name">Body Splash</div>
+        <p class="small-desc">Victoria's Secret, Bath &amp; Body Works, Sol de Janeiro.</p>
+        <div class="small-price-row">
+          <div class="small-price">a partir de<strong>R$ 90</strong></div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20Body%20Splash!" target="_blank" class="btn-sm">Pedir</a>
+        </div>
+      </div>
+      <div class="small-card">
+        <span class="small-icon">&#9889;</span>
+        <span class="ptag blue" style="margin-bottom:.5rem;">Tech</span>
+        <div class="small-name">Eletronicos</div>
+        <p class="small-desc">Notebooks, AirPods, smartwatches, Samsung, Sony, JBL.</p>
+        <div class="small-price-row">
+          <div class="small-price">a partir de<strong>R$ 200</strong></div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20eletronicos!" target="_blank" class="btn-sm">Pedir</a>
+        </div>
+      </div>
+      <div class="small-card">
+        <span class="small-icon">&#9917;</span>
+        <span class="ptag yellow" style="margin-bottom:.5rem;">Esporte</span>
+        <div class="small-name">Camisa Selecao</div>
+        <p class="small-desc">Nike oficial. Amarela, azul, goleiro. Todas as edi&ccedil;&otilde;es.</p>
+        <div class="small-price-row">
+          <div class="small-price">a partir de<strong>R$ 180</strong></div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20a%20camisa%20da%20Selecao!" target="_blank" class="btn-sm">Pedir</a>
+        </div>
+      </div>
+      <div class="small-card">
+        <span class="small-icon">&#127867;</span>
+        <span class="ptag red" style="margin-bottom:.5rem;">B&ocirc;nus</span>
+        <div class="small-name">Bebidas</div>
+        <p class="small-desc">Jack Daniel's, Johnnie Walker, vinhos. Sem imposto.</p>
+        <div class="small-price-row">
+          <div class="small-price">a partir de<strong>R$ 120</strong></div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20bebidas%20importadas!" target="_blank" class="btn-sm">Pedir</a>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Mounjaro -->
-  <div class="feat-card">
-    <div class="feat-card-bg-text">MOUNJARO</div>
-    <div class="feat-badge" style="background:rgba(255,45,45,.15);color:#ff6b6b;border:1px solid rgba(255,45,45,.25);">MAIS PEDIDO</div>
-    <span class="feat-icon">&#128137;</span>
-    <span class="ptag red">Sa&uacute;de</span>
-    <div class="feat-name">Mounjaro<br><span style="color:#ff6b6b">Tirzepatida</span></div>
-    <p class="feat-desc">Original com prescri&ccedil;&atilde;o. Valores muito abaixo do mercado brasileiro.</p>
-    <div class="feat-bottom">
-      <div class="feat-price">a partir de<strong>R$ 1.200</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20Mounjaro!" target="_blank" class="btn-enc">Encomendar</a>
-    </div>
-  </div>
-
-  <!-- Perfumes Arabes -->
-  <div class="feat-card">
-    <div class="feat-card-bg-text">PERFUME</div>
-    <div class="feat-badge blue">EXCLUSIVO</div>
-    <span class="feat-icon">&#129749;</span>
-    <span class="ptag blue">Perfumaria</span>
-    <div class="feat-name">Perfumes<br><span style="color:#5b9fff">&#193;rabes</span></div>
-    <p class="feat-desc">Lattafa, Swiss Arabian, Ajmal, Al Haramain. Fr&acirc;ncias intensas e duradouras.</p>
-    <div class="feat-bottom">
-      <div class="feat-price">a partir de<strong>R$ 280</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%20perfumes%20arabes!" target="_blank" class="btn-enc">Encomendar</a>
-    </div>
-  </div>
-
-</div>
-
-<div class="sep"></div>
-
-<!-- SMALL GRID 4x1 -->
-<div class="small-grid reveal scale-in d3">
-
-  <div class="small-card">
-    <span class="small-icon">&#128167;</span>
-    <span class="ptag green" style="margin-bottom:.5rem;">Beleza</span>
-    <div class="small-name">Body Splash</div>
-    <p class="small-desc">Victoria's Secret, Bath &amp; Body Works, Sol de Janeiro.</p>
-    <div class="small-price-row">
-      <div class="small-price">a partir de<strong>R$ 90</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20Body%20Splash!" target="_blank" class="btn-sm">Pedir</a>
-    </div>
-  </div>
-
-  <div class="small-card">
-    <span class="small-icon">&#9889;</span>
-    <span class="ptag blue" style="margin-bottom:.5rem;">Tech</span>
-    <div class="small-name">Eletronicos</div>
-    <p class="small-desc">Notebooks, AirPods, smartwatches, Samsung, Sony, JBL.</p>
-    <div class="small-price-row">
-      <div class="small-price">a partir de<strong>R$ 200</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20eletronicos!" target="_blank" class="btn-sm">Pedir</a>
-    </div>
-  </div>
-
-  <div class="small-card">
-    <span class="small-icon">&#9917;</span>
-    <span class="ptag yellow" style="margin-bottom:.5rem;">Esporte</span>
-    <div class="small-name">Camisa Selecao</div>
-    <p class="small-desc">Nike oficial. Amarela, azul, goleiro. Todas as edi&ccedil;&otilde;es.</p>
-    <div class="small-price-row">
-      <div class="small-price">a partir de<strong>R$ 180</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20a%20camisa%20da%20Selecao!" target="_blank" class="btn-sm">Pedir</a>
-    </div>
-  </div>
-
-  <div class="small-card">
-    <span class="small-icon">&#127867;</span>
-    <span class="ptag red" style="margin-bottom:.5rem;">B&ocirc;nus</span>
-    <div class="small-name">Bebidas</div>
-    <p class="small-desc">Jack Daniel's, Johnnie Walker, vinhos. Sem imposto.</p>
-    <div class="small-price-row">
-      <div class="small-price">a partir de<strong>R$ 120</strong></div>
-      <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20bebidas%20importadas!" target="_blank" class="btn-sm">Pedir</a>
-    </div>
-  </div>
-
-</div>
-```
-
   </div>
 </section>
-
-<!-- ══════════════════════════════════
-     CONFIANÇA
-══════════════════════════════════ -->
 
 <section class="trust-section">
   <div class="trust-inner">
@@ -745,10 +426,6 @@ animation:waPulse 2s infinite;
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     BIG CTA
-══════════════════════════════════ -->
-
 <section class="cta-section">
   <div style="position:relative;z-index:2;">
     <p class="section-tag reveal">Pronto pra pedir?</p>
@@ -766,40 +443,26 @@ animation:waPulse 2s infinite;
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     FOOTER
-══════════════════════════════════ -->
-
 <footer>
   <span class="footer-flags">&#127463;&#127479; &#9992; &#127477;&#127486;</span>
   <div class="footer-logo">PARA<span>GUAI</span> SHOP</div>
   <p class="footer-sub">Encomendas direto do Paraguai &bull; Tr&iacute;plice Fronteira &bull; Turismo de Compras</p>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-
 <a href="https://wa.me/5511969038584?text=Oi!%20Vi%20sua%20pagina%20e%20quero%20fazer%20um%20pedido!" target="_blank" class="wa-float">💬</a>
 
 <script>
-// Cursor glow
 const glow = document.getElementById('glow');
 document.addEventListener('mousemove', e => {
   glow.style.left = e.clientX + 'px';
   glow.style.top = e.clientY + 'px';
 });
-
-// Reveal on scroll
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      obs.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
@@ -807,6 +470,5 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 </script>
-
 </body>
 </html>
