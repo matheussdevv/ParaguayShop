@@ -130,6 +130,34 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-sm:hover{background:#ffd600;}
 .sep{height:3rem;}
 
+/* ─── PERFUME CATALOG ─── */
+.perf-section{position:relative;overflow:hidden;border-top:1px solid var(--border);}
+.perf-section::before{content:'';position:absolute;top:-120px;right:-120px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(91,159,255,.05) 0%,transparent 70%);pointer-events:none;}
+.perf-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.perf-tab{background:transparent;border:1px solid var(--border);color:rgba(255,255,255,.4);font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:.5rem 1.2rem;border-radius:100px;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
+.perf-tab:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7);}
+.perf-tab.active.mawwal{background:rgba(255,214,0,.1);border-color:rgba(255,214,0,.4);color:#ffd600;}
+.perf-tab.active.masc{background:rgba(26,111,255,.1);border-color:rgba(26,111,255,.4);color:#5b9fff;}
+.perf-tab.active.fem{background:rgba(255,100,180,.1);border-color:rgba(255,100,180,.4);color:#ff64b4;}
+.perf-panel{display:none;}
+.perf-panel.active{display:block;}
+.perf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.perf-item{background:#0b1120;padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background .2s;cursor:pointer;position:relative;}
+.perf-item:hover{background:#0f1828;}
+.perf-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--border);}
+.perf-item-left{display:flex;flex-direction:column;gap:.2rem;flex:1;min-width:0;}
+.perf-name{font-size:.88rem;font-weight:600;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.perf-vol{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.08em;}
+.perf-price-tag{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.04em;white-space:nowrap;flex-shrink:0;}
+.perf-price-tag.gold{color:#ffd600;}
+.perf-price-tag.blue{color:#5b9fff;}
+.perf-price-tag.pink{color:#ff64b4;}
+.perf-wa{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#25d366;color:#fff;font-size:.85rem;text-decoration:none;flex-shrink:0;transition:transform .2s,box-shadow .2s;}
+.perf-wa:hover{transform:scale(1.15);box-shadow:0 4px 16px rgba(37,211,102,.4);}
+.perf-legend{display:flex;align-items:center;gap:.5rem;font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-top:1.2rem;}
+.perf-legend::before{content:'';flex:1;height:1px;background:var(--border);}
+.perf-legend::after{content:'';flex:1;height:1px;background:var(--border);}
+
 /* ─── TRUST ─── */
 .trust-section{background:linear-gradient(135deg, rgba(0,212,106,.04) 0%, transparent 50%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2rem;}
 .trust-inner{max-width:1300px;margin:0 auto;}
@@ -232,6 +260,7 @@ footer{background:#040608;border-top:1px solid var(--border);padding:3rem 2rem;t
     <div class="hero-cta">
       <a href="https://wa.me/5511969038584?text=Oi!%20Vi%20sua%20pagina%20e%20quero%20fazer%20um%20pedido%20do%20Paraguai!" target="_blank" class="btn-green">Fazer meu pedido &#8594;</a>
       <a href="#produtos" class="btn-ghost">Ver produtos</a>
+      <a href="#perfumes" class="btn-ghost" style="border-color:rgba(91,159,255,.3);color:#5b9fff;">&#129749; Perfumes</a>
     </div>
   </div>
 
@@ -402,6 +431,186 @@ footer{background:#040608;border-top:1px solid var(--border);padding:3rem 2rem;t
   </div>
 </section>
 
+<section class="perf-section" id="perfumes">
+  <div class="section">
+    <p class="section-tag reveal">Linha completa</p>
+    <h2 class="section-title reveal d1">Cat&aacute;logo de<br><span style="color:#5b9fff">Perfumes</span></h2>
+    <p class="section-sub reveal d2">Pre&ccedil;os direto do Paraguai. Clique em qualquer item para encomendar no WhatsApp.</p>
+
+    <div class="perf-tabs reveal d2">
+      <button class="perf-tab active mawwal" onclick="switchTab('mawwal',this)">&#10024; Mawwal Exclusivo</button>
+      <button class="perf-tab masc" onclick="switchTab('masc',this)">&#128084; Masculino</button>
+      <button class="perf-tab fem" onclick="switchTab('fem',this)">&#128160; Feminino</button>
+    </div>
+
+    <!-- MAWWAL -->
+    <div class="perf-panel active reveal scale-in d3" id="panel-mawwal">
+      <div class="perf-grid">
+        <div class="perf-item" onclick="waMsg('Mawwal Gentlemen 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Mawwal Gentlemen</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag gold">R$ 446,25</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Mawwal%20Gentlemen%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Mawwal Gentlemen Intense 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Mawwal Gentlemen Intense</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag gold">R$ 446,25</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Mawwal%20Gentlemen%20Intense%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Mawwal Ladies 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Mawwal Ladies</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag gold">R$ 446,25</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Mawwal%20Ladies%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Mawwal Noir 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Mawwal Noir</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag gold">R$ 446,25</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Mawwal%20Noir%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Mawwal Rouge 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Mawwal Rouge</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag gold">R$ 446,25</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Mawwal%20Rouge%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Mawwal Sport 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Mawwal Sport</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag gold">R$ 414,38</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Mawwal%20Sport%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+      </div>
+      <p class="perf-legend">linha &aacute;rabe exclusiva</p>
+    </div>
+
+    <!-- MASCULINO -->
+    <div class="perf-panel" id="panel-masc">
+      <div class="perf-grid">
+        <div class="perf-item" onclick="waMsg('Azzaro Wanted 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Azzaro Wanted</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 478,13</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Azzaro%20Wanted%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Azzaro The Most Wanted 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Azzaro The Most Wanted</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 541,88</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Azzaro%20The%20Most%20Wanted%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Bad Boy Cobalt 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Bad Boy Cobalt</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 605,63</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Bad%20Boy%20Cobalt%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Bad Boy Le Parfum 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Bad Boy Le Parfum</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 592,88</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Bad%20Boy%20Le%20Parfum%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Dior Sauvage EDT 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Dior Sauvage EDT</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 669,38</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Dior%20Sauvage%20EDT%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Dior Sauvage EDP 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Dior Sauvage EDP</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 733,13</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Dior%20Sauvage%20EDP%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Eros Flame 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Eros Flame</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 446,25</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Eros%20Flame%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Invictus Victory 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Invictus Victory</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 573,75</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Invictus%20Victory%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('One Million 100ml')">
+          <div class="perf-item-left"><div class="perf-name">One Million</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 510,00</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20One%20Million%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('One Million Royal 100ml')">
+          <div class="perf-item-left"><div class="perf-name">One Million Royal</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 573,75</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20One%20Million%20Royal%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Phantom 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Phantom</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 541,88</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Phantom%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Scandal Pour Homme 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Scandal Pour Homme</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag blue">R$ 541,88</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Scandal%20Pour%20Homme%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Ultra Male 125ml')">
+          <div class="perf-item-left"><div class="perf-name">Ultra Male</div><div class="perf-vol">125ml</div></div>
+          <div class="perf-price-tag blue">R$ 510,00</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Ultra%20Male%20125ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+      </div>
+      <p class="perf-legend">perfumaria masculina</p>
+    </div>
+
+    <!-- FEMININO -->
+    <div class="perf-panel" id="panel-fem">
+      <div class="perf-grid">
+        <div class="perf-item" onclick="waMsg('212 VIP Rosé 80ml')">
+          <div class="perf-item-left"><div class="perf-name">212 VIP Ros&eacute;</div><div class="perf-vol">80ml</div></div>
+          <div class="perf-price-tag pink">R$ 541,88</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20212%20VIP%20Ros%C3%A9%2080ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Good Girl 80ml')">
+          <div class="perf-item-left"><div class="perf-name">Good Girl</div><div class="perf-vol">80ml</div></div>
+          <div class="perf-price-tag pink">R$ 605,63</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Good%20Girl%2080ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Good Girl Suprême 80ml')">
+          <div class="perf-item-left"><div class="perf-name">Good Girl Supr&ecirc;me</div><div class="perf-vol">80ml</div></div>
+          <div class="perf-price-tag pink">R$ 637,50</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Good%20Girl%20Supr%C3%AAme%2080ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Good Girl Blush 80ml')">
+          <div class="perf-item-left"><div class="perf-name">Good Girl Blush</div><div class="perf-vol">80ml</div></div>
+          <div class="perf-price-tag pink">R$ 637,50</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Good%20Girl%20Blush%2080ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Idôle 100ml')">
+          <div class="perf-item-left"><div class="perf-name">Id&ocirc;le</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag pink">R$ 605,63</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Id%C3%B4le%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('La Vie Est Belle 100ml')">
+          <div class="perf-item-left"><div class="perf-name">La Vie Est Belle</div><div class="perf-vol">100ml</div></div>
+          <div class="perf-price-tag pink">R$ 637,50</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20La%20Vie%20Est%20Belle%20100ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Libre 90ml')">
+          <div class="perf-item-left"><div class="perf-name">Libre</div><div class="perf-vol">90ml</div></div>
+          <div class="perf-price-tag pink">R$ 669,38</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Libre%2090ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg("L'Interdit 80ml")">
+          <div class="perf-item-left"><div class="perf-name">L&#39;Interdit</div><div class="perf-vol">80ml</div></div>
+          <div class="perf-price-tag pink">R$ 605,63</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20L%27Interdit%2080ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Olympea 80ml')">
+          <div class="perf-item-left"><div class="perf-name">Olympea</div><div class="perf-vol">80ml</div></div>
+          <div class="perf-price-tag pink">R$ 478,13</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Olympea%2080ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+        <div class="perf-item" onclick="waMsg('Scandal 80ml')">
+          <div class="perf-item-left"><div class="perf-name">Scandal</div><div class="perf-vol">80ml</div></div>
+          <div class="perf-price-tag pink">R$ 573,75</div>
+          <a href="https://wa.me/5511969038584?text=Oi!%20Quero%20encomendar%3A%20Scandal%2080ml" target="_blank" class="perf-wa" onclick="event.stopPropagation()">&#128172;</a>
+        </div>
+      </div>
+      <p class="perf-legend">perfumaria feminina</p>
+    </div>
+  </div>
+</section>
+
 <section class="trust-section">
   <div class="trust-inner">
     <p class="section-tag reveal">Por que eu?</p>
@@ -452,6 +661,18 @@ footer{background:#040608;border-top:1px solid var(--border);padding:3rem 2rem;t
 <a href="https://wa.me/5511969038584?text=Oi!%20Vi%20sua%20pagina%20e%20quero%20fazer%20um%20pedido!" target="_blank" class="wa-float">💬</a>
 
 <script>
+// Perfume tabs
+function switchTab(id, btn) {
+  document.querySelectorAll('.perf-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.perf-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+function waMsg(prod) {
+  const txt = encodeURIComponent('Oi! Quero encomendar: ' + prod);
+  window.open('https://wa.me/5511969038584?text=' + txt, '_blank');
+}
+
 const glow = document.getElementById('glow');
 document.addEventListener('mousemove', e => {
   glow.style.left = e.clientX + 'px';
